@@ -33,9 +33,10 @@ public class CrossesAndZeroes {
                 turn += 1;
             }
             System.out.println("Желаете сыграть еще раз? (Y - да): ");
-            if (!scanner.next().equalsIgnoreCase("Y"))
+            if (!scanner.next().equalsIgnoreCase("Y")) {
                 turn = 0;
                 break;
+            }
         }
 
     }
@@ -91,8 +92,8 @@ public class CrossesAndZeroes {
         int y;
         do{
             System.out.print("Введите координаты хода X и Y\n(от 1 до 3) через пробел => ");
-                x = scanner.nextInt() - 1;
-                y = scanner.nextInt() - 1;
+            x = scanner.nextInt() - 1;
+            y = scanner.nextInt() - 1;
             System.out.println();
         }
         while (!isCellValid(x, y) || !isCellEmpty(x, y));
@@ -203,11 +204,28 @@ public class CrossesAndZeroes {
                 tempY = y;
                 winRate = 1;
                 /**
-                 * Проверяем диагональ
+                 * Проверяем диагональ вправо
                  */
                 for(int m = 0; m < fieldSize; m++){
                     if(tempX < fieldSize -1 && tempY < fieldSize -1){
                         if(field[++tempX][++tempY] == dot){
+                            winRate++;
+                            //System.out.println(winCount - winRate  + "До победы по диагонали");
+                            if (winRate == winCount){
+                                return true;
+                            }
+                        }
+                    }
+                }
+                tempX = x;
+                tempY = y;
+                winRate = 1;
+                /**
+                 * Проверяем диагональ влево
+                 */
+                for(int h = 0; h < fieldSize; h++){
+                    if(tempX < fieldSize -1 && tempY >= 1){
+                        if(field[++tempX][--tempY] == dot){
                             winRate++;
                             //System.out.println(winCount - winRate  + "До победы по диагонали");
                             if (winRate == winCount){
