@@ -216,7 +216,6 @@ public class CrossesAndZeroes {
                         }
                     }
                 }
-                winRate = 0;
             }
         }
         return false;
