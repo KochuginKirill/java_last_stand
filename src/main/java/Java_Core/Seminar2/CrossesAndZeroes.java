@@ -44,9 +44,11 @@ public class CrossesAndZeroes {
      * Инициализация объектов игры
      */
     static void initialize(){
-        System.out.println("Введите размер квадратного поля => ");
+        System.out.print("Введите размер квадратного поля => ");
+        System.out.println();
         fieldSize = scanner.nextInt();
-        System.out.println("Введите количество символов для победы => ");
+        System.out.print("Введите количество символов для победы => ");
+        System.out.println();
         winCount = scanner.nextInt();
         field = new char[fieldSize][fieldSize];
         for(int x = 0; x < fieldSize; x++){
@@ -88,7 +90,8 @@ public class CrossesAndZeroes {
         int x;
         int y;
         do{
-            System.out.println("Введите координаты хода X и Y\n(от 1 до 3) через пробел: ");
+            System.out.print("Введите координаты хода X и Y\n(от 1 до 3) через пробел => ");
+            System.out.println();
                 x = scanner.nextInt() - 1;
                 y = scanner.nextInt() - 1;
         }
@@ -157,11 +160,11 @@ public class CrossesAndZeroes {
         int y;
         ArrayList<Integer> dots = getNotEmptyDots(field, dot);
         if(!(dots.isEmpty())){
-            System.out.println(dots);
+            //System.out.println(dots);
             int winRate;
             int tempX;
             int tempY;
-            for (int i = 0; i < fieldSize - 2; i+=2) {
+            for (int i = 0; i < dots.size() -1; i+=2) {
                 x = dots.get(i);
                 y = dots.get(i + 1);
                 tempX = x;
@@ -174,7 +177,7 @@ public class CrossesAndZeroes {
                     if(tempX < fieldSize -1){
                         if(field[++tempX][y] == dot){
                             winRate++;
-                            System.out.println(winCount - winRate + "До победы по вертикали");
+                            //System.out.println(winCount - winRate + "До победы по вертикали");
                             if (winRate == winCount){
                                 return true;
                             }
@@ -189,7 +192,7 @@ public class CrossesAndZeroes {
                     if(tempY < fieldSize -1){
                         if(field[x][++tempY] == dot){
                             winRate++;
-                            System.out.println(winCount - winRate + "До победы по горизонтали");
+                            //System.out.println(winCount - winRate + "До победы по горизонтали");
                             if (winRate == winCount){
                                 return true;
                             }
@@ -206,7 +209,7 @@ public class CrossesAndZeroes {
                     if(tempX < fieldSize -1 && tempY < fieldSize -1){
                         if(field[++tempX][++tempY] == dot){
                             winRate++;
-                            System.out.println(winCount - winRate  + "До победы по диагонали");
+                            //System.out.println(winCount - winRate  + "До победы по диагонали");
                             if (winRate == winCount){
                                 return true;
                             }
