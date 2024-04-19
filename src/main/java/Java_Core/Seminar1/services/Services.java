@@ -1,4 +1,4 @@
-package Java_Core_Seminar1.services;
+package Java_Core.Seminar1.services;
 
 import java.io.BufferedReader;
 import java.util.Scanner;
