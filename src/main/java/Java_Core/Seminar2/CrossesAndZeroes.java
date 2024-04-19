@@ -45,11 +45,11 @@ public class CrossesAndZeroes {
      */
     static void initialize(){
         System.out.print("Введите размер квадратного поля => ");
-        System.out.println();
         fieldSize = scanner.nextInt();
-        System.out.print("Введите количество символов для победы => ");
         System.out.println();
+        System.out.print("Введите количество символов для победы => ");
         winCount = scanner.nextInt();
+        System.out.println();
         field = new char[fieldSize][fieldSize];
         for(int x = 0; x < fieldSize; x++){
             for (int y = 0; y < fieldSize; y++){
@@ -91,9 +91,9 @@ public class CrossesAndZeroes {
         int y;
         do{
             System.out.print("Введите координаты хода X и Y\n(от 1 до 3) через пробел => ");
-            System.out.println();
                 x = scanner.nextInt() - 1;
                 y = scanner.nextInt() - 1;
+            System.out.println();
         }
         while (!isCellValid(x, y) || !isCellEmpty(x, y));
         field[x][y] = DOT_HUMAN;
