@@ -30,7 +30,7 @@ public class CrossesAndZeroes {
                 printField();
                 if (checkState(DOT_AI, "Победил компьютер!"))
                     break;
-                turn += 1;
+                turn++;
             }
             System.out.println("Желаете сыграть еще раз? (Y - да): ");
             if (!scanner.next().equalsIgnoreCase("Y")) {
