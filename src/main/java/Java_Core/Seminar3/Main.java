@@ -13,9 +13,9 @@ public class Main {
         workers.addWorkers(Pasha);
         System.out.println("Рейтинг по ежемесячным зарплатам: ");
         workers.sortWorkers();
-        for (int i = 0; i < workers.getWorkers().size(); i++) {
-            System.out.println(i + 1 + ") " + workers.getWorkers().get(i).getName()
-                    + " " + workers.getWorkers().get(i).MonthlySalary());
+        int place = 1;
+        for (Worker worker: workers) {
+            System.out.println(place++ + ") " + worker.getName() + " " + worker.MonthlySalary());
         }
     }
 }
