@@ -14,8 +14,14 @@ public class Database implements Iterable<BankAccount> {
         bankAccounts = new ArrayList<>();
     }
 
-    public void addToDB(String name, Double balance, Database database){
+    public void addBaToDb(String name, Double balance, Database database){
         bankAccounts.add(new BankAccount(name, balance, database));
+    }
+    public void addCbaToDb(String name, Double balance, Database database){
+        bankAccounts.add(new CreditBankAccount(name, balance, database));
+    }
+    public void addDbaDb(String name, Double balance, Database database){
+        bankAccounts.add(new DebitBankAccount(name, balance, database));
     }
 
     public int dataBaseSize(){

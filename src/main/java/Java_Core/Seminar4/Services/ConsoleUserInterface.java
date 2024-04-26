@@ -11,9 +11,9 @@ import static Java_Core.Seminar4.Services.UserInputs.*;
 public class ConsoleUserInterface {
     public static void runProgram(){
         Database database = new Database();
-        database.addToDB("Petya", 10000.0, database);
-        database.addToDB("Kolya", 30000.0, database);
-        database.addToDB("Masha", 150000.0, database);
+        database.addBaToDb("Petya", 10000.0, database);
+        database.addCbaToDb("Kolya", 30000.0, database);
+        database.addDbaDb("Masha", 150000.0, database);
         int input1 ;
         Double input2;
         String input3;
@@ -27,12 +27,17 @@ public class ConsoleUserInterface {
             System.out.println("3) Добавить деньги на конкретный счет");
             System.out.println("4) Снять деньги с конкретного счета");
             System.out.println("5) Открыть новый счет");
-            System.out.println("6) Перевести деньги с счета на счет");
+            System.out.println("6) Открыть новый кредитный счет");
+            System.out.println("8) Открыть новый дебетовый счет");
+            System.out.println("8) Перевести деньги с счета на счет");
             System.out.println("0) Закрыть программу");
             System.out.println("----------------------------");
             System.out.println();
             System.out.print("Напишите цифру запроса => ");
             input1 = userInputInteger();
+            if (input1 < 0 || input1 > 8){
+                continue;
+            }
             switch(input1){
                 case 1:
                     database.printDB();
@@ -88,9 +93,31 @@ public class ConsoleUserInterface {
                     System.out.print("Внесите начальную сумму =>");
                     input2 = userInputDouble();
                     System.out.println();
-                    database.addToDB(input3, input2, database);
+                    database.addBaToDb(input3, input2, database);
                     break;
                 case 6:
+                    System.out.println("----------------------------");
+                    System.out.print("Введите название нового кредитного счета =>");
+                    input3 = userInputString();
+                    System.out.println();
+                    System.out.println("----------------------------");
+                    System.out.print("Внесите начальную сумму =>");
+                    input2 = userInputDouble();
+                    System.out.println();
+                    database.addCbaToDb(input3, input2, database);
+                    break;
+                case 7:
+                    System.out.println("----------------------------");
+                    System.out.print("Введите название нового дебетового счета =>");
+                    input3 = userInputString();
+                    System.out.println();
+                    System.out.println("----------------------------");
+                    System.out.print("Внесите начальную сумму =>");
+                    input2 = userInputDouble();
+                    System.out.println();
+                    database.addDbaDb(input3, input2, database);
+                    break;
+                case 8:
                     try {
                         BankAccountTransfer(database);
                     } catch (TransactionError e) {
