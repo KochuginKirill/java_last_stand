@@ -30,8 +30,6 @@ public class Transaction {
                 database.searchBankAccount(id1).withdrawFromBalance(sum);
                 database.searchBankAccount(id2).addToBalance(sum);
             }else {
-                //System.out.println("Текущий баланс счета доступный для снятия: " + database.searchBankAccount(id1).getBalance());
-                //System.out.println("Сумма, которую вы хотите снять: " + sum);
                 throw new TransactionError(String.format("Произошла ошибка перевода, перепроверьте данные. Баланс счета: %f Попытка снять сумму: %f ",
                         database.searchBankAccount(id1).getBalance(), sum));
             }
