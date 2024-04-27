@@ -11,9 +11,9 @@ import static Java_Core.Seminar4.Services.UserInputs.*;
 public class ConsoleUserInterface {
     public static void runProgram(){
         Database database = new Database();
-        database.addBaToDb("Petya", 10000.0, database);
-        database.addCbaToDb("Kolya", 30000.0, database);
-        database.addDbaDb("Masha", 150000.0, database);
+        database.addBankAccount("Petya", 10000.0, database);
+        database.addCreditAccount("Kolya", 30000.0, database);
+        database.addDebitAccount("Masha", 150000.0, database);
         int input1 ;
         Double input2;
         String input3;
@@ -28,7 +28,7 @@ public class ConsoleUserInterface {
             System.out.println("4) Снять деньги с конкретного счета");
             System.out.println("5) Открыть новый счет");
             System.out.println("6) Открыть новый кредитный счет");
-            System.out.println("8) Открыть новый дебетовый счет");
+            System.out.println("7) Открыть новый дебетовый счет");
             System.out.println("8) Перевести деньги с счета на счет");
             System.out.println("0) Закрыть программу");
             System.out.println("----------------------------");
@@ -93,7 +93,7 @@ public class ConsoleUserInterface {
                     System.out.print("Внесите начальную сумму =>");
                     input2 = userInputDouble();
                     System.out.println();
-                    database.addBaToDb(input3, input2, database);
+                    database.addBankAccount(input3, input2, database);
                     break;
                 case 6:
                     System.out.println("----------------------------");
@@ -104,7 +104,7 @@ public class ConsoleUserInterface {
                     System.out.print("Внесите начальную сумму =>");
                     input2 = userInputDouble();
                     System.out.println();
-                    database.addCbaToDb(input3, input2, database);
+                    database.addCreditAccount(input3, input2, database);
                     break;
                 case 7:
                     System.out.println("----------------------------");
@@ -115,7 +115,7 @@ public class ConsoleUserInterface {
                     System.out.print("Внесите начальную сумму =>");
                     input2 = userInputDouble();
                     System.out.println();
-                    database.addDbaDb(input3, input2, database);
+                    database.addDebitAccount(input3, input2, database);
                     break;
                 case 8:
                     try {

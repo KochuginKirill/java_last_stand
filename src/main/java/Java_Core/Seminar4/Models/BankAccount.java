@@ -8,6 +8,9 @@ public class BankAccount {
     private String name;
     private Double balance;
 
+    String accountType= "BankAccount";
+
+
     BankAccount(String name, Double balance, Database database) throws IllegalArgumentException {
         if (balance >= 0){
             this.id = database.dataBaseSize() + 1;
@@ -18,12 +21,14 @@ public class BankAccount {
         }
     }
 
+
     public void printBA(){
         System.out.println();
         System.out.println("--------------");
         System.out.println("id: " + id);
         System.out.println("Имя: " + name );
         System.out.println("Баланс: " + balance);
+        System.out.println("Тип: " + accountType);
         System.out.println("--------------");
         System.out.println();
     }
