@@ -18,6 +18,6 @@ public class Main {
             io.printStackTrace();
         }
 
-        printTree(new File("./src/main/java/Java_Core/Seminar5"), "", true);
+        printTree(new File("./src"), "", true);
     }
 }
