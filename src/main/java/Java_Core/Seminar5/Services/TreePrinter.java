@@ -3,7 +3,6 @@ package Java_Core.Seminar5.Services;
 import java.io.File;
 
 public class TreePrinter {
-
     public static void printTree(File file, String indent, boolean isLast){
         System.out.print(indent);
         if (isLast){
