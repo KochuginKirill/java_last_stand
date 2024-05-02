@@ -13,7 +13,7 @@ public class Main {
         Copy copy = new Copy();
         try {
             copy.copyFilesAndFolders(new File("./src/main/java/Java_Core/Seminar5/FilesFrom"),
-                    new File("./src/main/java/Java_Core/Seminar5/FilesWhere"));
+                    new File("./src/main/java/Java_Core/Seminar5/Backup"));
         } catch (IOException io){
             io.printStackTrace();
         }
