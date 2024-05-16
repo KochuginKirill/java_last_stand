@@ -11,7 +11,7 @@ public class Map extends JPanel{
     private final int HUMAN_DOT = 1;
     private final int AI_DOT = 2;
     private static final int EMPTY_DOT = 0;
-    private final int DOT_PADDING = 1;
+    private final int DOT_PADDING = 2;
     private static final String MSG_WIN_HUMAN = "Победил игрок!";
     private static final String MSG_WIN_AI = "Победил компьютер";
     private static final String MSG_DRAW = "Ничья";
@@ -134,40 +134,41 @@ public class Map extends JPanel{
     }
 
     private void aiTurn() {
-        for (int y = 0; y < fieldSize; y++) {
-            for (int x = 0; x < fieldSize; x++) {
-                if (field[y][x] == EMPTY_DOT){
-                    field[y][x] = AI_DOT;
-                    if (checkWin((char) AI_DOT, winCount))
-                        return;
-                    else
-                        field[y][x] = EMPTY_DOT;
-                }
-            }
-        }
-
-        boolean f = checkWin((char) HUMAN_DOT, winCount - 1);
-
-        for (int y = 0; y < fieldSize; y++) {
-            for (int x = 0; x < fieldSize; x++) {
-                if (field[y][x] == EMPTY_DOT){
-                    field[y][x] = HUMAN_DOT;
-                    if (checkWin((char) HUMAN_DOT, winCount - (f ? 0 : 1))) {
+        if(!isGameover) {
+            for (int y = 0; y < fieldSize; y++) {
+                for (int x = 0; x < fieldSize; x++) {
+                    if (field[y][x] == EMPTY_DOT) {
                         field[y][x] = AI_DOT;
-                        return;
+                        if (checkWin((char) AI_DOT, winCount))
+                            return;
+                        else
+                            field[y][x] = EMPTY_DOT;
                     }
-                    else
-                        field[y][x] = EMPTY_DOT;
                 }
             }
-        }
 
-        int x, y;
-        do {
-            x = RANDOM.nextInt(fieldSize);
-            y = RANDOM.nextInt(fieldSize);
-        } while (!isEmptyCell(x, y));
-        field[y][x] = AI_DOT;
+            boolean f = checkWin((char) HUMAN_DOT, winCount - 1);
+
+            for (int y = 0; y < fieldSize; y++) {
+                for (int x = 0; x < fieldSize; x++) {
+                    if (field[y][x] == EMPTY_DOT) {
+                        field[y][x] = HUMAN_DOT;
+                        if (checkWin((char) HUMAN_DOT, winCount - (f ? 0 : 1))) {
+                            field[y][x] = AI_DOT;
+                            return;
+                        } else
+                            field[y][x] = EMPTY_DOT;
+                    }
+                }
+            }
+
+            int x, y;
+            do {
+                x = RANDOM.nextInt(fieldSize);
+                y = RANDOM.nextInt(fieldSize);
+            } while (!isEmptyCell(x, y));
+            field[y][x] = AI_DOT;
+        }
     }
 
     static boolean checkWin(char dot, int winCount){
