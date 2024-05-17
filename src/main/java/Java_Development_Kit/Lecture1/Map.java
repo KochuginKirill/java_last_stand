@@ -16,8 +16,8 @@ public class Map extends JPanel{
     private static final String MSG_WIN_AI = "Победил компьютер";
     private static final String MSG_DRAW = "Ничья";
     private static String gameOverMessage;
-    private static int fieldSize = 3;
-    private int winCount = 3;
+    private static int fieldSize;
+    private int winCount;
     private static boolean isGameover = false;
     private static char[][] field = new char[3][3];
     int cellHeight;
@@ -61,6 +61,8 @@ public class Map extends JPanel{
         System.out.printf("Mode: %d;\nSize: x=%d, y=%d;\nWin Length: %d",
                 mode, fSzX, fSzY, wLen);
         isGameover = false;
+        winCount = wLen;
+        fieldSize = fSzX;
         initMap();
         repaint();
     }
