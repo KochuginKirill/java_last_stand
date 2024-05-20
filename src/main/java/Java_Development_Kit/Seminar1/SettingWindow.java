@@ -1,4 +1,4 @@
-package Java_Development_Kit.Lecture1;
+package Java_Development_Kit.Seminar1;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
