@@ -76,7 +76,7 @@ public class JChat extends JFrame {
         chatOutput.setText("");
         File file = SERVER.createFile();
         if (file.exists()) {
-            try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            try (BufferedReader reader = SERVER.reader(file)) {
                 String line;
                 while ((line = reader.readLine()) != null) {
                     chatOutput.append(line + "\n");

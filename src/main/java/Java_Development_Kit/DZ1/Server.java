@@ -16,4 +16,8 @@ public class Server {
     File createFile(){
         return new File(CHAT_HISTORY);
     }
+
+    BufferedReader reader(File file) throws FileNotFoundException {
+        return new BufferedReader(new FileReader(file));
+    }
 }
