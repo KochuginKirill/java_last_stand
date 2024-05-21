@@ -14,28 +14,35 @@ public class JChat extends JFrame {
     private static final int WIDTH = 400;
     private static final int WINDOW_POSX = 100;
     private static final int WINDOW_POSY = 100;
-    private static final String CHAT_HISTORY = "chat.txt";
+    private static final String CHAT_HISTORY = "src/main/java/Java_Development_Kit/DZ1/chat.txt";
     private final JTextArea chatOutput = new JTextArea("");
     private final JTextField chatInput = new JTextField();
 
     JChat(String login) {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        setTitle("Online chat");
+        setTitle("Online chat user: " + login);
         setBounds(WINDOW_POSX, WINDOW_POSY, WIDTH, HEIGHT);
         chatOutput.setEditable(false);
         chatOutput.setBackground(Color.decode("#FFFFF0"));
         update();
-        JPanel grid = new JPanel(new GridLayout(5, 1));
-        grid.add(chatOutput);
-        JLabel label = new JLabel("Enter your message ");
-        grid.add(label);
-        grid.add(chatInput);
-        JButton buttonConnect = new JButton("Send");
-        grid.add(buttonConnect);
-        buttonConnect.addActionListener(e -> sendMessage(login));
+        JPanel grid = new JPanel(new GridLayout(3, 1));
+        JPanel gridOutput = new JPanel(new GridLayout(1, 1));
+        JPanel gridInput = new JPanel(new GridLayout(2, 1));
+        JPanel gridButtons = new JPanel(new GridLayout(2, 2));
+        gridOutput.add(chatOutput);
+        JLabel EnterLabel = new JLabel("Enter your message ");
+        gridInput.add(EnterLabel);
+        gridInput.add(chatInput);
+        JLabel sendLabel = new JLabel("Send your message");
+        gridButtons.add(sendLabel);
+        JLabel updateLabel = new JLabel("Update to load new message");
+        gridButtons.add(updateLabel);
+        JButton buttonSend = new JButton("Send");
+        gridButtons.add(buttonSend);
+        buttonSend.addActionListener(e -> sendMessage(login));
         JButton buttonUpdate = new JButton("Update");
-        grid.add(buttonUpdate);
+        gridButtons.add(buttonUpdate);
         buttonUpdate.addActionListener(e -> update());
         chatInput.setBackground(Color.decode("#FFFFF0"));
         chatInput.addKeyListener(new KeyAdapter() {
@@ -46,7 +53,9 @@ public class JChat extends JFrame {
                 }
             }
         });
-
+        grid.add(gridOutput);
+        grid.add(gridInput);
+        grid.add(gridButtons);
         add(grid);
         setVisible(true);
     }
