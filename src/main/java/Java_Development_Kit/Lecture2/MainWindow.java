@@ -20,6 +20,7 @@ public class MainWindow extends JFrame {
         MainCanvas canvas = new MainCanvas(this);
         add(canvas);
         setVisible(true);
+        //this.addMouseListener(e -> sprites.);
     }
 
     void onDrawFrame(MainCanvas canvas, Graphics g, float deltaTime) {
