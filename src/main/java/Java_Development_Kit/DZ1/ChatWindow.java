@@ -5,8 +5,8 @@ import java.awt.*;
 
 
 public class ChatWindow extends JFrame {
-    private static final int WINDOW_HEIGHT = 700;
-    private static final int WINDOW_WIDTH = 700;
+    private static final int WINDOW_HEIGHT = 400;
+    private static final int WINDOW_WIDTH = 400;
     private static final int WINDOW_POSX = 600;
     private static final int WINDOW_POSY = 200;
     private final JTextField loginField = new JTextField();
@@ -19,16 +19,20 @@ public class ChatWindow extends JFrame {
         JLabel loginPanel = new JLabel("Login: ");
         panel.add(loginPanel, BorderLayout.CENTER);
         panel.add(loginField, BorderLayout.CENTER);
+        loginField.setBackground(Color.decode("#FFFFF0"));
         JLabel passwordPanel = new JLabel("Password ");
         JTextField passwordField = new JTextField();
+        passwordField.setBackground(Color.decode("#FFFFF0"));
         panel.add(passwordPanel, BorderLayout.CENTER);
         panel.add(passwordField, BorderLayout.CENTER);
         JLabel ipPanel = new JLabel("Server ip ");
         JTextField ipField = new JTextField();
         panel.add(ipPanel, BorderLayout.CENTER);
         panel.add(ipField, BorderLayout.CENTER);
+        ipField.setBackground(Color.decode("#FFFFF0"));
         JLabel portLabel = new JLabel("Port: ");
         JTextField portField = new JTextField();
+        portField.setBackground(Color.decode("#FFFFF0"));
         panel.add(portLabel, BorderLayout.CENTER);
         panel.add(portField, BorderLayout.CENTER);
 
