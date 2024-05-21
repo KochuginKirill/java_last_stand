@@ -47,7 +47,6 @@ public class ChatWindow extends JFrame {
             String login = loginField.getText().trim();
             new JChat(login);
         });
-
         setVisible(true);
     }
 }

@@ -25,7 +25,7 @@ public class JChat extends JFrame {
         setBounds(WINDOW_POSX, WINDOW_POSY, WIDTH, HEIGHT);
         chatOutput.setEditable(false);
         chatOutput.setBackground(Color.decode("#FFFFF0"));
-        update();
+        //update(); Раз в 4м пункте так написано, то так и сделаю
         JPanel grid = new JPanel(new GridLayout(3, 1));
         JPanel gridOutput = new JPanel(new GridLayout(1, 1));
         JPanel gridInput = new JPanel(new GridLayout(2, 1));
