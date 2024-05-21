@@ -15,21 +15,25 @@ public class ChatWindow extends JFrame {
         setTitle("Запускаем чат");
         setBounds(WINDOW_POSX, WINDOW_POSY, WINDOW_WIDTH, WINDOW_HEIGHT);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+
         JPanel panel = new JPanel(new GridLayout(9, 1));
         JLabel loginPanel = new JLabel("Login: ");
         panel.add(loginPanel, BorderLayout.CENTER);
         panel.add(loginField, BorderLayout.CENTER);
         loginField.setBackground(Color.decode("#FFFFF0"));
+
         JLabel passwordPanel = new JLabel("Password ");
         JTextField passwordField = new JTextField();
         passwordField.setBackground(Color.decode("#FFFFF0"));
         panel.add(passwordPanel, BorderLayout.CENTER);
         panel.add(passwordField, BorderLayout.CENTER);
+
         JLabel ipPanel = new JLabel("Server ip ");
         JTextField ipField = new JTextField();
         panel.add(ipPanel, BorderLayout.CENTER);
         panel.add(ipField, BorderLayout.CENTER);
         ipField.setBackground(Color.decode("#FFFFF0"));
+
         JLabel portLabel = new JLabel("Port: ");
         JTextField portField = new JTextField();
         portField.setBackground(Color.decode("#FFFFF0"));
@@ -37,10 +41,7 @@ public class ChatWindow extends JFrame {
         panel.add(portField, BorderLayout.CENTER);
 
         JButton btnLogin = new JButton("Connect");
-
         panel.add(btnLogin, BorderLayout.AFTER_LINE_ENDS);
-
-
         add(panel);
         btnLogin.addActionListener(e -> {
             String login = loginField.getText().trim();
