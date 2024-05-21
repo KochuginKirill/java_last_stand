@@ -14,9 +14,9 @@ public class JChat extends JFrame {
     private static final int WIDTH = 400;
     private static final int WINDOW_POSX = 100;
     private static final int WINDOW_POSY = 100;
-    private static final String CHAT_HISTORY = "src/main/java/Java_Development_Kit/DZ1/chat.txt";
     private final JTextArea chatOutput = new JTextArea("");
     private final JTextField chatInput = new JTextField();
+    private static final Server SERVER = new Server();
 
     JChat(String login) {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -25,7 +25,7 @@ public class JChat extends JFrame {
         setBounds(WINDOW_POSX, WINDOW_POSY, WIDTH, HEIGHT);
         chatOutput.setEditable(false);
         chatOutput.setBackground(Color.decode("#FFFFF0"));
-        update();
+        updateChat();
         JPanel grid = new JPanel(new GridLayout(3, 1));
         JPanel gridOutput = new JPanel(new GridLayout(1, 1));
         JPanel gridInput = new JPanel(new GridLayout(2, 1));
@@ -43,7 +43,7 @@ public class JChat extends JFrame {
         buttonSend.addActionListener(e -> sendMessage(login));
         JButton buttonUpdate = new JButton("Update");
         gridButtons.add(buttonUpdate);
-        buttonUpdate.addActionListener(e -> update());
+        buttonUpdate.addActionListener(e -> updateChat());
         chatInput.setBackground(Color.decode("#FFFFF0"));
         chatInput.addKeyListener(new KeyAdapter() {
             @Override
@@ -64,21 +64,17 @@ public class JChat extends JFrame {
         String message = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yy/MM/dd HH:mm:ss"))
                 + " " + login + " : " + chatInput.getText() + "\n";
         chatOutput.append(message);
-        saveMessageToFile(message);
+        save(message);
         chatInput.setText("");
     }
 
-    private void saveMessageToFile(String message) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(CHAT_HISTORY, true))) {
-            writer.write(message);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    private void save(String message) {
+        SERVER.saveToFile(message);
     }
 
-    private void update() {
-        File file = new File(CHAT_HISTORY);
+    private void updateChat() {
         chatOutput.setText("");
+        File file = SERVER.createFile();
         if (file.exists()) {
             try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
                 String line;
