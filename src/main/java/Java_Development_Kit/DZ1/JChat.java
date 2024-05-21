@@ -36,7 +36,7 @@ public class JChat extends JFrame {
         gridInput.add(chatInput);
         JLabel sendLabel = new JLabel("Send your message");
         gridButtons.add(sendLabel);
-        JLabel updateLabel = new JLabel("Update to load new message");
+        JLabel updateLabel = new JLabel("Update to load new messages");
         gridButtons.add(updateLabel);
         JButton buttonSend = new JButton("Send");
         gridButtons.add(buttonSend);
