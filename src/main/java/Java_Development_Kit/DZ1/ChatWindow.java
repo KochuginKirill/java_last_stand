@@ -40,7 +40,7 @@ public class ChatWindow extends JFrame {
         panel.add(portLabel, BorderLayout.CENTER);
         panel.add(portField, BorderLayout.CENTER);
 
-        JButton btnLogin = new JButton("Connect");
+        JButton btnLogin = new JButton("Connect to server");
         panel.add(btnLogin, BorderLayout.AFTER_LINE_ENDS);
         add(panel);
         btnLogin.addActionListener(e -> {
