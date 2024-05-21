@@ -32,12 +32,10 @@ public class SettingWindow extends JFrame {
 
         JSlider slider = new JSlider(3,10,5);
         Label fieldSizeLabel = new Label("Установленный размер поля: " + currentSize);
-        slider.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                currentSize = slider.getValue();
-                fieldSizeLabel.setText("Установленный размер поля: " + currentSize);
-            }
+        slider.addChangeListener(e -> {
+            currentSize = slider.getValue();
+            fieldSizeLabel.setText("Установленный размер поля: " + currentSize);
+            Map.fieldSize = currentSize;
         });
         Label choiceOfSize = new Label("Выберите размер поля");
         JPanel panel = new JPanel(new GridLayout(3, 1));
@@ -51,12 +49,10 @@ public class SettingWindow extends JFrame {
         Label winSize = new Label("Выберите длину для победы");
         Label currentLength = new Label("Установленная длина: " + currentSize);
         JSlider slider = new JSlider(3,10,5);
-        slider.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                currentSize = slider.getValue();
-                currentLength.setText("Установленная длина: " + currentSize);
-            }
+        slider.addChangeListener(e -> {
+            currentSize = slider.getValue();
+            currentLength.setText("Установленная длина: " + currentSize);
+            Map.winCount = currentSize;
         });
         JPanel panel = new JPanel(new GridLayout(3, 1));
         panel.add(winSize);
@@ -75,12 +71,9 @@ public class SettingWindow extends JFrame {
         panel.add(gameModePanel());
         panel.add(fieldSizeSliderPanel());
         panel.add(winCountForVictoryPanel());
-        btnStart.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                gameWindow.startNewGame(0, 3, 3, 3);
-                setVisible(false);
-            }
+        btnStart.addActionListener(e -> {
+            gameWindow.startNewGame(0, 3, 3, 3);
+            setVisible(false);
         });
         add(panel);
         add(btnStart, BorderLayout.SOUTH);

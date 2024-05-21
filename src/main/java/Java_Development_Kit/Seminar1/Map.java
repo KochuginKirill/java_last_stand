@@ -16,8 +16,8 @@ public class Map extends JPanel{
     private static final String MSG_WIN_AI = "Победил компьютер";
     private static final String MSG_DRAW = "Ничья";
     private static String gameOverMessage;
-    private static int fieldSize;
-    private int winCount;
+    static int fieldSize;
+    static int winCount;
     private static boolean isGameover = false;
     private static char[][] field = new char[3][3];
     int cellHeight;
