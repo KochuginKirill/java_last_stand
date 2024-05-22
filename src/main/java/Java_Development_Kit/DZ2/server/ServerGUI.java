@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 //класс требуется разделить на GUI, controller и repository (смотри схему проекта)
-public class ServerGUI extends JFrame implements ServerView {
+public class ServerGUI extends JFrame implements ServerClient {
     public static final int WIDTH = 400;
     public static final int HEIGHT = 300;
 

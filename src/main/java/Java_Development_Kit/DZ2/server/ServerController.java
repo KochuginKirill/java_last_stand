@@ -6,12 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ServerController {
-    private ServerView serverView;
+    private ServerClient serverView;
     public static ServerLog repository;
     List<ClientController> clients = new ArrayList<>();
     boolean work;
 
-    public void setServerView(ServerView serverView) { this.serverView = serverView; }
+    public void setServerView(ServerClient serverView) { this.serverView = serverView; }
     public void setServerRepository (ServerLog repository) { this.repository = repository; }
     public boolean connectUser(ClientController clientController) {
         if (!work){
