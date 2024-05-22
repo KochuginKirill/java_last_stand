@@ -3,7 +3,7 @@ package Java_Development_Kit.DZ2.client;
 /**
  * Интерфейс описывающий абстракцию GUI
  */
-public interface UserIntractable {
+public interface ClientInteractions {
     /**
      * Метод для отображения сообщения в GUI
      * @param message текст сообщения

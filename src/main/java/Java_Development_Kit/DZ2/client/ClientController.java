@@ -8,14 +8,14 @@ import Java_Development_Kit.DZ2.server.ServerController;
  * @clientView абстракция графического интерфейса
  * @server объект для связи с сервером
  */
-public class ClientController implements UserIntractable {
+public class ClientController implements ClientInteractions {
     private boolean connected;
     private String name;
-    private UserIntractable clientView;
+    private ClientInteractions clientView;
     private ServerController server;
 
     //сеттеры
-    public void setClientView(UserIntractable clientView) {
+    public void setClientView(ClientInteractions clientView) {
         this.clientView = clientView;
     }
 
