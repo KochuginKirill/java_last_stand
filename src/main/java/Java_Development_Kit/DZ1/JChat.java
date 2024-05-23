@@ -81,8 +81,10 @@ public class JChat extends JFrame {
                 while ((line = reader.readLine()) != null) {
                     chatOutput.append(line + "\n");
                 }
-            } catch (IOException e) {
+            } catch (FileNotFoundException e) {
                 e.printStackTrace();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
         }
     }
