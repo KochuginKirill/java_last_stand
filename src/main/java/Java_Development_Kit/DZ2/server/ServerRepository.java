@@ -1,11 +1,22 @@
 package Java_Development_Kit.DZ2.server;
 
+import Java_Development_Kit.DZ2.client.ClientController;
+
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.List;
 
-public class ServerStorageRepository implements ServerLog {
+public class ServerRepository implements ServerLog {
+
+    List<ClientController> clients = new ArrayList<>();
     public static final String LOG_PATH =
             "src/main/java/Java_Development_Kit/DZ2/log.txt";
+
+    @Override
+    public List<ClientController> clientList() {
+        return clients;
+    }
 
     @Override
     public String readHistory() {

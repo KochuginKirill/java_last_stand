@@ -4,7 +4,8 @@ import Java_Development_Kit.DZ2.client.ClientController;
 import Java_Development_Kit.DZ2.client.ClientGUI;
 import Java_Development_Kit.DZ2.server.ServerController;
 import Java_Development_Kit.DZ2.server.ServerGUI;
-import Java_Development_Kit.DZ2.server.ServerStorageRepository;
+import Java_Development_Kit.DZ2.server.ServerLog;
+import Java_Development_Kit.DZ2.server.ServerRepository;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,10 +13,11 @@ public class Main {
         //создание объектов сервера и создание связи между ними
         ServerGUI serverWindow = new ServerGUI();
         ServerController serverController = new ServerController();
-        ServerStorageRepository serverStorageRepository = new ServerStorageRepository();
-        serverController.setServerRepository(serverStorageRepository);
+        ServerRepository serverRepository = new ServerRepository();
+        serverController.setServerRepository(serverRepository);
         serverController.setServerView(serverWindow);
-        serverWindow.setServerController(serverController);
+        serverWindow.setServerRepository(serverRepository);
+        serverWindow.setServerClient(serverController);
 
         //создание объектов клиента1 и создание связи между ними
         ClientGUI clientGUI1 = new ClientGUI();

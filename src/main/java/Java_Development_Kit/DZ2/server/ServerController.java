@@ -1,23 +1,25 @@
 package Java_Development_Kit.DZ2.server;
 
 import Java_Development_Kit.DZ2.client.ClientController;
+import Java_Development_Kit.DZ2.client.ClientGUI;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ServerController {
-    private ServerClient serverView;
+public class ServerController implements ServerClient {
+    private ServerGUI serverView;
     public static ServerLog repository;
-    List<ClientController> clients = new ArrayList<>();
     boolean work;
 
-    public void setServerView(ServerClient serverView) { this.serverView = serverView; }
-    public void setServerRepository (ServerLog repository) { this.repository = repository; }
+    public void setServerView(ServerGUI serverView) { this.serverView = serverView; }
+
+    public void setServerRepository(ServerLog repository) { this.repository = repository; }
+
     public boolean connectUser(ClientController clientController) {
-        if (!work){
+        if (!work) {
             return false;
         }
-        clients.add(clientController);
+        repository.clientList().add(clientController);
         return true;
     }
 
@@ -26,13 +28,14 @@ public class ServerController {
     }
 
     public void disconnectUser(ClientController clientController) {
-        clients.remove(clientController);
-        if (clientController != null){
+        repository.clientList().remove(clientController);
+        if (clientController != null) {
             clientController.disconnectedFromServer();
         }
     }
-    private void answerAll(String text){
-        for (ClientController clientController: clients){
+
+    private void answerAll(String text) {
+        for (ClientController clientController : repository.clientList()) {
             clientController.answerFromServer(text);
         }
     }
@@ -41,28 +44,22 @@ public class ServerController {
         return work;
     }
 
-    public void turnOn(){
+    public void turnOn() {
         work = true;
     }
 
-    public void turnOff(){
+    public void turnOff() {
         work = false;
     }
 
     public void message(String s) {
-        if (!work){
+        if (!work) {
             return;
         }
         s += "";
-        //appendLog(s);
         answerAll(s);
         repository.save(s);
     }
-
-//    private void appendLog(String s) {
-//        for (ClientController client:
-//             clients) {
-//            client.showMessage(s);
-//        }
-//    }
 }
+
+

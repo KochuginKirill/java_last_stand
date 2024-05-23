@@ -1,6 +1,8 @@
 package Java_Development_Kit.DZ2.client;
 
+import Java_Development_Kit.DZ2.server.ServerClient;
 import Java_Development_Kit.DZ2.server.ServerController;
+import Java_Development_Kit.DZ2.server.ServerLog;
 
 /**
  * класс содержащий логику работы клиента
@@ -12,16 +14,17 @@ public class ClientController implements ClientInteractions {
     private boolean connected;
     private String name;
     private ClientInteractions clientView;
-    private ServerController server;
+    private ServerClient server;
 
     //сеттеры
     public void setClientView(ClientInteractions clientView) {
         this.clientView = clientView;
     }
 
-    public void setServer(ServerController server) {
+    public void setServer(ServerClient server) {
         this.server = server;
     }
+
 
     /**
      * Метод попытки подключения к серверу. Вызывается из GUI

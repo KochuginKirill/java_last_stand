@@ -8,20 +8,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 //класс требуется разделить на GUI, controller и repository (смотри схему проекта)
-public class ServerGUI extends JFrame implements ServerClient {
+public class ServerGUI extends JFrame {
     public static final int WIDTH = 400;
     public static final int HEIGHT = 300;
 
-    List<ClientGUI> clientGUIList;
-
     JButton btnStart, btnStop;
     JTextArea chatHistoryArea;
-    private ServerController serverController;
+    private ServerClient serverClient;
+    ServerLog repository;
 
-    public void setServerController(ServerController serverController) { this.serverController = serverController; }
+    public void setServerClient(ServerClient serverClient) { this.serverClient = serverClient; }
+
+    public void setServerRepository(ServerLog repository) { this.repository = repository; }
 
     public ServerGUI(){
-        clientGUIList = new ArrayList<>();
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(WIDTH, HEIGHT);
@@ -32,14 +32,6 @@ public class ServerGUI extends JFrame implements ServerClient {
         createPanel();
 
         setVisible(true);
-    }
-
-
-    public void disconnectUser(ClientGUI clientGUI){
-        clientGUIList.remove(clientGUI);
-        if (clientGUI != null){
-            clientGUI.disconnectedFromServer();
-        }
     }
 
 
@@ -59,21 +51,21 @@ public class ServerGUI extends JFrame implements ServerClient {
         btnStop = new JButton("Stop");
 
         btnStart.addActionListener(e -> {
-            if (serverController.isWorking()){
+            if (serverClient.isWorking()){
                 appendLog("Сервер уже был запущен");
             } else {
-                serverController.turnOn();
+                serverClient.turnOn();
                 appendLog("Сервер запущен!");
             }
         });
 
         btnStop.addActionListener(e -> {
-            if (!serverController.isWorking()){
+            if (!serverClient.isWorking()){
                 appendLog("Сервер уже был остановлен");
             } else {
-                serverController.turnOff();
-                while (!clientGUIList.isEmpty()){
-                    disconnectUser(clientGUIList.get(clientGUIList.size()-1));
+                serverClient.turnOff();
+                while (!repository.clientList().isEmpty()){
+                    serverClient.disconnectUser(repository.clientList().get(repository.clientList().size()-1));
                 }
                 appendLog("Сервер остановлен!");
             }
