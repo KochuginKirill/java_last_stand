@@ -3,8 +3,8 @@ package Java_Development_Kit.DZ2.server;
 import Java_Development_Kit.DZ2.client.ClientController;
 import Java_Development_Kit.DZ2.client.ClientGUI;
 
-import java.util.ArrayList;
 import java.util.List;
+
 
 public class ServerController implements ServerClient {
     private ServerGUI serverView;
@@ -25,6 +25,11 @@ public class ServerController implements ServerClient {
 
     public String getHistoryFromRepository() {
         return repository.readHistory();
+    }
+
+    @Override
+    public List<ClientController> clientListFromRepository() {
+        return repository.clientList();
     }
 
     public void disconnectUser(ClientController clientController) {

@@ -1,11 +1,7 @@
 package Java_Development_Kit.DZ2.server;
 
-import Java_Development_Kit.DZ2.client.ClientGUI;
-
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 //класс требуется разделить на GUI, controller и repository (смотри схему проекта)
 public class ServerGUI extends JFrame {
@@ -15,11 +11,8 @@ public class ServerGUI extends JFrame {
     JButton btnStart, btnStop;
     JTextArea chatHistoryArea;
     private ServerClient serverClient;
-    ServerLog repository;
 
     public void setServerClient(ServerClient serverClient) { this.serverClient = serverClient; }
-
-    public void setServerRepository(ServerLog repository) { this.repository = repository; }
 
     public ServerGUI(){
 
@@ -64,8 +57,8 @@ public class ServerGUI extends JFrame {
                 appendLog("Сервер уже был остановлен");
             } else {
                 serverClient.turnOff();
-                while (!repository.clientList().isEmpty()){
-                    serverClient.disconnectUser(repository.clientList().get(repository.clientList().size()-1));
+                while (!serverClient.clientListFromRepository().isEmpty()){
+                    serverClient.disconnectUser(serverClient.clientListFromRepository().get(serverClient.clientListFromRepository().size()-1));
                 }
                 appendLog("Сервер остановлен!");
             }
