@@ -15,7 +15,6 @@ public class Main {
         ServerController serverController = new ServerController();
         ServerRepository serverRepository = new ServerRepository();
         serverController.setServerRepository(serverRepository);
-        serverController.setServerView(serverWindow);
         serverWindow.setServerClient(serverController);
 
         //создание объектов клиента1 и создание связи между ними

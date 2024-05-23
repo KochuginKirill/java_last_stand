@@ -7,11 +7,8 @@ import java.util.List;
 
 
 public class ServerController implements ServerClient {
-    private ServerGUI serverView;
     public static ServerLog repository;
     boolean work;
-
-    public void setServerView(ServerGUI serverView) { this.serverView = serverView; }
 
     public void setServerRepository(ServerLog repository) { this.repository = repository; }
 
