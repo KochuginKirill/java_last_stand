@@ -14,6 +14,7 @@ public class Main {
         Employee employee2 = new Employee(54321,
                 "+7-843-843-83-83",
                 "Sasha",
+
                 "Worked in another company fo 5 years");
 
         Employee employee3 = new Employee(77777,
