@@ -43,8 +43,16 @@ public class Main {
 
         System.out.println("Группировка по названию департаментов:");
         Map<String, List<Person>> personMapSortedByDepartmentName = servicePerson.groupByDepartmentName(personList);
-        personMapSortedByDepartment.entrySet().stream()
+        personMapSortedByDepartmentName.entrySet().stream()
                 .forEach(e -> e.getValue().stream()
                         .forEach(p -> System.out.println(p.getDepart().getName() + " " + p.getName())));
+        System.out.println();
+
+        System.out.println("Cамый старший сотрудник в департаменте: ");
+        Map<String, Person> personMaxAgeInDepartment = servicePerson.getDepartmentOldestPerson(personList);
+        personMaxAgeInDepartment.entrySet().stream()
+                .forEach(e -> System.out.println(e.getValue().getDepart().getName() + " " +
+                        e.getValue().getName() + " " +
+                        e.getValue().getAge()));
     }
 }
