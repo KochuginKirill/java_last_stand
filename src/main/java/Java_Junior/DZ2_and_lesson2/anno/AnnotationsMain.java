@@ -2,7 +2,9 @@ package Java_Junior.DZ2_and_lesson2.anno;
 
 import Java_Junior.DZ2_and_lesson2.anno.lib.ObjectCreator;
 import Java_Junior.DZ2_and_lesson2.anno.lib.Random;
-import lombok.Data;
+import Java_Junior.DZ2_and_lesson2.anno.lib.RandomDate;
+
+import java.util.Date;
 
 public class AnnotationsMain {
 
@@ -10,6 +12,8 @@ public class AnnotationsMain {
     Person rndPerson = ObjectCreator.createObj(Person.class);
     System.out.println("age1 = " + rndPerson.age1);
     System.out.println("age2 = " + rndPerson.age2);
+    System.out.println("Date = " + rndPerson.date1);
+    System.out.println("Date = " + rndPerson.date2);
 
     // extPerson.isAssignableFrom(ExtPerson.class) // true
     // extPerson.isAssignableFrom(Person.class) // false
@@ -40,6 +44,12 @@ public class AnnotationsMain {
 
     @Random
     private String age3;
+
+    @RandomDate
+    private Date date1;
+
+    @RandomDate(min = 1704067200001L, max = 1735689600002L)
+    private Date date2;
 
   }
 

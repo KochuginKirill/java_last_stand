@@ -12,7 +12,7 @@ public class ObjectCreator {
       RandomAnnotationProcessor.processAnnotation(obj);
       return obj;
     } catch (Exception e) {
-      System.err.println("ниче не получилось: " + e.getMessage());
+      System.err.println("ничего не получилось: " + e.getMessage());
       return null; // throw new IllegalStateException
     }
   }
