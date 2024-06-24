@@ -15,15 +15,19 @@
         <!-- Echo the SQL to stdout -->
         <property name="show_sql">true</property>
         <!-- Set the current session context -->
+        <property name="hibernate.hbm2ddl.auto">create-drop</property>
         <property name="current_session_context_class">thread</property>
         <!-- Drop and re-create the database schema on startup -->
-        <property name="hbm2ddl.auto">create-drop</property>
         <!-- dbcp connection pool configuration -->
         <property name="hibernate.dbcp.initialSize">5</property>
         <property name="hibernate.dbcp.maxTotal">20</property>
         <property name="hibernate.dbcp.maxIdle">10</property>
         <property name="hibernate.dbcp.minIdle">5</property>
         <property name="hibernate.dbcp.maxWaitMillis">-1</property>
-<!--        <mapping class="net.javaguides.hibernate.entity.Student" />-->
+        <mapping class="Java_Junior.lesson4.entity.Author" />
+        <mapping class="Java_Junior.lesson4.entity.AuthorBook" />
+        <mapping class="Java_Junior.lesson4.entity.Book" />
+        <mapping class="Java_Junior.lesson4.hw.Post" />
+        <mapping class="Java_Junior.lesson4.hw.PostComment" />
     </session-factory>
 </hibernate-configuration>

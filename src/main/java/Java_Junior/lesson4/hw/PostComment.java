@@ -3,14 +3,19 @@ package Java_Junior.lesson4.hw;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Post")
-public class Post {
+@Table(name = "PostComment")
+public class PostComment {
     @Id
     @Column(name = "id")
     private Long id;
 
     @Column(name = "title")
     private String title;
+
+
+    @ManyToOne
+    @JoinColumn(name = "post_id")
+    private Post post_id;
 
     public Long getId() {
         return id;
@@ -28,12 +33,20 @@ public class Post {
         this.title = title;
     }
 
+    public Post getPost_id() {
+        return post_id;
+    }
+
+    public void setPost_id(Post post_id) {
+        this.post_id = post_id;
+    }
+
     @Override
     public String toString() {
-        return "Post{" +
+        return "PostComment{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
+      ", post_id=" + post_id +
                 '}';
     }
 }
-
