@@ -45,9 +45,10 @@ public class ChatClient {
         // client <- (getUsers|sendMessage from client) server    <--------sendMessage client2
         //
 
-        // Отдельный поток на чтение сообщений
+//         Отдельный поток на чтение сообщений
 //        ServerListener serverListener = new ServerListener(in);
 //        new Thread(serverListener).start();
+
         new Thread(() -> {
           while (true) {
             // TODO: парсим сообщение в AbstractRequest
@@ -74,13 +75,16 @@ public class ChatClient {
 
             String sendMsgRequest = objectMapper.writeValueAsString(request);
             out.println(sendMsgRequest);
-          } else if (type.equals("3")) {
+          } else if (type.equals("2")) {
             // TODO: Создаете запрос отправки "всем"
             // send(get users)
             // String msgFromServer = in.readLine();
             // ...
 
-//            serverListener.subscribe("get users", new Consumer<String>() {
+          } else if (type.equals("3")) {
+
+
+            //            serverListener.subscribe("get users", new Consumer<String>() {
 //              @Override
 //              public void accept(String s) {
 //                System.out.println("Список юзеров: " + s);

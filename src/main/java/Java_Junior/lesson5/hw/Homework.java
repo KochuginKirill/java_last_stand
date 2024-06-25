@@ -1,4 +1,4 @@
-package ru.gb.lesson5.hw;
+package Java_Junior.lesson5.hw;
 
 public class Homework {
 

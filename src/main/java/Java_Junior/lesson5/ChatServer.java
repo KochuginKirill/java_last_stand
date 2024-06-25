@@ -8,8 +8,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class ChatServer {
@@ -57,7 +59,7 @@ public class ChatServer {
     }
   }
 
-  private static class ClientHandler implements Runnable {
+  private static class ClientHandler implements Runnable, ServerToClient {
 
     private final Socket client;
     private final Scanner in;
@@ -172,6 +174,16 @@ public class ChatServer {
       }
     }
 
+    @Override
+    public void printUsersNames() {
+      Set<String> setKeys = clients.keySet();
+      int temp = 0;
+      for(String k: setKeys){
+        temp++;
+        System.out.print("Имя пользователя " + temp + ". => " + k);
+        System.out.println();
+      }
+    }
   }
 
 }
