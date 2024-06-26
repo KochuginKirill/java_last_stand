@@ -5,15 +5,7 @@ package Java_Junior.lesson5;
  *   "type": "users"
  * }
  */
-public class ListRequest {
+public class ListRequest extends AbstractRequest {
 
-  private String type;
-
-  public String getType() {
-    return type;
-  }
-
-  public void setType(String type) {
-    this.type = type;
-  }
+  public static final String TYPE = "list";
 }

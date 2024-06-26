@@ -11,11 +11,9 @@ public class JsonMain {
   public static void main(String[] args) throws JsonProcessingException {
     ListResponse response = new ListResponse();
 
-    User user1 = new User();
-    user1.setLogin("anonymous");
+    User user1 = new User("anonymous");
 
-    User user2 = new User();
-    user2.setLogin("nagibator");
+    User user2 = new User("nagibator");
 
     response.setUsers(List.of(user1, user2));
 

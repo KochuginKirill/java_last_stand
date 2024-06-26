@@ -83,6 +83,14 @@ public class ChatClient {
 
           } else if (type.equals("3")) {
 
+            createListRequest("list");
+            sleep();
+            List<User> users = checkListRequest(in.nextLine());
+            for (User user:
+                 users) {
+              System.out.println(user);
+            }
+
 
             //            serverListener.subscribe("get users", new Consumer<String>() {
 //              @Override
@@ -120,6 +128,26 @@ public class ChatClient {
     } catch (IOException e) {
       System.err.println("Ошибка чтения JSON: " + e.getMessage());
       return false;
+    }
+  }
+
+  private static String createListRequest(String list) {
+    ListRequest listRequest = new ListRequest();
+    listRequest.setType(list);
+    try {
+      return objectMapper.writeValueAsString(listRequest);
+    } catch (JsonProcessingException e) {
+      throw new RuntimeException("Ошибка JSON: " + e.getMessage());
+    }
+  }
+
+  private static List<User> checkListRequest(String listResponse) {
+    try {
+      ListResponse resp = objectMapper.reader().readValue(listResponse, ListResponse.class);
+      return resp.getUsers();
+    } catch (IOException e) {
+      System.err.println("Ошибка чтения JSON: " + e.getMessage());
+      return new ArrayList<>();
     }
   }
 

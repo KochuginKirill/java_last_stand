@@ -3,15 +3,13 @@ package Java_Junior.lesson5;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class ChatServer {
@@ -59,13 +57,15 @@ public class ChatServer {
     }
   }
 
-  private static class ClientHandler implements Runnable, ServerToClient {
+  private static class ClientHandler implements Runnable {
 
     private final Socket client;
     private final Scanner in;
     private final PrintWriter out;
     private final Map<String, ClientHandler> clients;
     private String clientLogin;
+
+    private List<User> users;
 
     public ClientHandler(Socket client, Map<String, ClientHandler> clients) throws IOException {
       this.client = client;
@@ -78,6 +78,7 @@ public class ChatServer {
     @Override
     public void run() {
       System.out.println("Подключен новый клиент");
+      users = new ArrayList<>();
 
       try {
         String loginRequest = in.nextLine();
@@ -101,6 +102,7 @@ public class ChatServer {
       }
 
       clients.put(clientLogin, this);
+      users.add(new User(clientLogin));
       String successfulLoginResponse = createLoginResponse(true);
       out.println(successfulLoginResponse);
 
@@ -135,8 +137,13 @@ public class ChatServer {
             continue;
           }
           clientTo.sendMessage(request.getMessage());
-        } else if (false) { // BroadcastRequest.TYPE.equals(type)
+        } else if (ListRequest.TYPE.equals(type)) { // BroadcastRequest.TYPE.equals(type)
+          // Клиент прислал запрос на список пользователей
           // TODO: Читать остальные типы сообщений
+          ListResponse response = new ListResponse();
+          response.setUsers(users);
+          out.println(response);
+
         } else if (false) { // DisconnectRequest.TYPE.equals(type)
           break;
         } else {
@@ -161,7 +168,16 @@ public class ChatServer {
 
     public void sendMessage(String message) {
       // TODO: нужно придумать структуру сообщения
-      out.println(message);
+      //out.println(message);
+
+      ObjectWriter writer = new ObjectMapper().writer().withDefaultPrettyPrinter();
+      String s = null;
+      try {
+        s = writer.writeValueAsString(message);
+      } catch (JsonProcessingException e) {
+        throw new RuntimeException(e);
+      }
+      out.println(s);
     }
 
     private String createLoginResponse(boolean success) {
@@ -173,17 +189,12 @@ public class ChatServer {
         throw new RuntimeException("Не удалось создать loginResponse: " + e.getMessage());
       }
     }
-
-    @Override
-    public void printUsersNames() {
-      Set<String> setKeys = clients.keySet();
-      int temp = 0;
-      for(String k: setKeys){
-        temp++;
-        System.out.print("Имя пользователя " + temp + ". => " + k);
-        System.out.println();
-      }
-    }
   }
+
+//  private String createListResponse (Map<String, ClientHandler> clients) {
+//    List<String> users = new ArrayList<String>(clients.keySet());
+//    ListResponse listResponse = new ListResponse();
+//    listResponse.setUsers(users);
+//  }
 
 }

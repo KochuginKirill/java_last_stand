@@ -2,6 +2,10 @@ package Java_Junior.lesson5;
 
 public class User {
 
+  public User(String login) {
+    setLogin(login);
+  }
+
   private String login;
   // еще поля, описывающие юзера
 
