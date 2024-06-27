@@ -20,6 +20,7 @@ public class ChatClient {
 //    String clientLogin = "User_" + UUID.randomUUID().toString();
 //    String clientLogin = "nagibator";
     Scanner console = new Scanner(System.in);
+    System.out.println("Введите логин");
     String clientLogin = console.nextLine();
 
     // 127.0.0.1 или localhost
@@ -64,41 +65,36 @@ public class ChatClient {
           System.out.println("1. Послать сообщение другу");
           System.out.println("2. Послать сообщение всем");
           System.out.println("3. Получить список логинов");
+          System.out.println("4. Отключиться от сервера");
 
           String type = console.nextLine();
           if (type.equals("1")) {
             // TODO: считываете с консоли логин, кому отправить
 
             SendMessageRequest request = new SendMessageRequest();
+            System.out.println("Укажите имя пользователя");
+            request.setRecipient(console.nextLine()); // TODO указываем логин получателя
+            System.out.println("Напишите ваше сообщение");
             request.setMessage(console.nextLine());
-            request.setRecipient("unknown"); // TODO указываем логин получателя
 
             String sendMsgRequest = objectMapper.writeValueAsString(request);
             out.println(sendMsgRequest);
           } else if (type.equals("2")) {
             // TODO: Создаете запрос отправки "всем"
-            // send(get users)
-            // String msgFromServer = in.readLine();
-            // ...
+            SendToAllRequest request = new SendToAllRequest();
+            System.out.println("Напишите ваше сообщение");
+            request.setMessage(console.nextLine());
+
+            String sendMsgRequest = objectMapper.writeValueAsString(request);
+            out.println(sendMsgRequest);
 
           } else if (type.equals("3")) {
-
-            createListRequest("list");
-            sleep();
-            List<User> users = checkListRequest(in.nextLine());
-            for (User user:
-                 users) {
-              System.out.println(user);
-            }
-
-
-            //            serverListener.subscribe("get users", new Consumer<String>() {
-//              @Override
-//              public void accept(String s) {
-//                System.out.println("Список юзеров: " + s);
-//              }
-//            });
-
+            String listRequest = createListRequest(clientLogin);
+            out.println(listRequest);
+          } else if (type.equals("4")){
+            DisconnectRequest disconnectRequest = new DisconnectRequest();
+            String sendMsgRequest = objectMapper.writeValueAsString(disconnectRequest);
+            out.println(sendMsgRequest);
           }
 
         }
@@ -131,9 +127,9 @@ public class ChatClient {
     }
   }
 
-  private static String createListRequest(String list) {
+  private static String createListRequest(String clientLogin) {
     ListRequest listRequest = new ListRequest();
-    listRequest.setType(list);
+    listRequest.setRecipient(clientLogin);
     try {
       return objectMapper.writeValueAsString(listRequest);
     } catch (JsonProcessingException e) {
@@ -153,7 +149,7 @@ public class ChatClient {
 
   private static void sleep() {
     try {
-      Thread.sleep(60000);
+      Thread.sleep(600);
     } catch (InterruptedException e) {
       throw new RuntimeException(e);
     }
