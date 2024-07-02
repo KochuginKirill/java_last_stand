@@ -1,6 +1,7 @@
 package Spring.lesson1.hw;
 
 import Spring.lesson1.scope.Singleton;
+import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -9,7 +10,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Component
-@Scope("singleton")
+@Scope(ConfigurableListableBeanFactory.SCOPE_SINGLETON)
 public class Table {
 
     private TicketNumberGenerator ticketNumberGenerator;
