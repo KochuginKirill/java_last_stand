@@ -1,4 +1,4 @@
-package ru.gb.scope;
+package Spring.lesson1.scope;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;

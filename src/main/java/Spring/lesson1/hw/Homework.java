@@ -1,4 +1,4 @@
-package ru.gb.hw;
+package Spring.lesson1.hw;
 
 public class Homework {
 

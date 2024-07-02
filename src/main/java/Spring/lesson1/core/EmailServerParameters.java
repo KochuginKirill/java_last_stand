@@ -1,4 +1,4 @@
-package ru.gb.core;
+package Spring.lesson1.core;
 
 import org.springframework.stereotype.Component;
 

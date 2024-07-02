@@ -1,10 +1,10 @@
-package ru.gb.configuration;
+package Spring.lesson1.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Scope;
-import ru.gb.sql.SessionFactory;
+import Spring.lesson1.sql.SessionFactory;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

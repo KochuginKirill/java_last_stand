@@ -1,12 +1,12 @@
-package ru.gb;
+package Spring.lesson1;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
-import ru.gb.core.EmailSender;
-import ru.gb.scope.Prototype;
-import ru.gb.scope.Singleton;
+import Spring.lesson1.core.EmailSender ;
+import Spring.lesson1.scope.Prototype;
+import Spring.lesson1.scope.Singleton;
 
 @SpringBootApplication
 public class Application {

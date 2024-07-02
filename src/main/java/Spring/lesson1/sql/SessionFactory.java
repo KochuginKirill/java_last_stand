@@ -1,4 +1,4 @@
-package ru.gb.sql;
+package Spring.lesson1.sql;
 
 import java.sql.Connection;
 
