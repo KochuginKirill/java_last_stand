@@ -1,7 +1,7 @@
 package Spring.lesson3.controller;
 
+import Spring.lesson3.service.ProjectService;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import Spring.lesson3.model.Timesheet ;
@@ -25,10 +25,14 @@ public class TimesheetController {
   // @PutMapping("/timesheets/{id}") // обновить конкретную запись по идентификатору
 
   private final TimesheetService service;
+  private final ProjectService projectService;
 
-  public TimesheetController(TimesheetService service) {
+  public TimesheetController(TimesheetService service, ProjectService projectService) {
     this.service = service;
+    this.projectService = projectService;
   }
+
+
 
   // /timesheets/{id}
   @GetMapping("/{id}") // получить все
@@ -50,6 +54,11 @@ public class TimesheetController {
 
   @PostMapping // создание нового ресурса
   public ResponseEntity<Timesheet> create(@RequestBody Timesheet timesheet) {
+    try {
+      projectService.getById(timesheet.getId());
+    } catch (Exception e){
+      throw new RuntimeException("No project with such id was found");
+    }
     timesheet = service.create(timesheet);
 
     // 201 Created

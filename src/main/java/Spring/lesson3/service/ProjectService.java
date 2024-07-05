@@ -1,0 +1,32 @@
+package Spring.lesson3.service;
+
+import Spring.lesson3.model.Project;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class ProjectService {
+    private final ProjectService repository;
+
+    public ProjectService(ProjectService repository) {
+        this.repository = repository;
+    }
+
+    public Optional<Project> getById(Long id) {
+        return repository.getById(id);
+    }
+
+    public List<Project> getAll() {
+        return repository.getAll();
+    }
+
+    public Project create(Project timesheet) {
+        return repository.create(timesheet);
+    }
+
+    public void delete(Long id) {
+        repository.delete(id);
+    }
+}
