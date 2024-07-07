@@ -24,10 +24,10 @@ public class ProjectRepository {
         return List.copyOf(projects);
     }
 
-    public Project create(Project timesheet) {
-        timesheet.setId(sequence++);
-        projects.add(timesheet);
-        return timesheet;
+    public Project create(Project project) {
+        project.setId(sequence++);
+        projects.add(project);
+        return project;
     }
 
     public void delete(Long id) {

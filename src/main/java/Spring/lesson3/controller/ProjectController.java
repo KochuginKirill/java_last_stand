@@ -38,11 +38,11 @@ public class ProjectController {
     }
 
     @PostMapping // создание нового ресурса
-    public ResponseEntity<Project> create(@RequestBody Project timesheet) {
-        timesheet = service.create(timesheet);
+    public ResponseEntity<Project> create(@RequestBody Project project) {
+        project = service.create(project);
 
         // 201 Created
-        return ResponseEntity.status(HttpStatus.CREATED).body(timesheet);
+        return ResponseEntity.status(HttpStatus.CREATED).body(project);
     }
 
     @DeleteMapping("/{id}")

@@ -54,12 +54,11 @@ public class TimesheetController {
 
   @PostMapping // создание нового ресурса
   public ResponseEntity<Timesheet> create(@RequestBody Timesheet timesheet) {
-    try {
-      projectService.getById(timesheet.getId());
-    } catch (Exception e){
+    if(projectService.getById(timesheet.getProjectId()).isPresent()){
+      timesheet = service.create(timesheet);
+    } else {
       throw new RuntimeException("No project with such id was found");
     }
-    timesheet = service.create(timesheet);
 
     // 201 Created
     return ResponseEntity.status(HttpStatus.CREATED).body(timesheet);

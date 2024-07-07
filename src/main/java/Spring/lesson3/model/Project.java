@@ -1,7 +1,9 @@
 package Spring.lesson3.model;
 
 public class Project {
+
     private Long id;
+
     private String name;
 
     public Long getId() {

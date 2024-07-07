@@ -3,6 +3,7 @@ package Spring.lesson3.repository;
 import org.springframework.stereotype.Repository;
 import Spring.lesson3.model.Timesheet ;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -27,6 +28,7 @@ public class TimesheetRepository {
 
   public Timesheet create(Timesheet timesheet) {
     timesheet.setId(sequence++);
+    timesheet.setCreatedAt(LocalDate.now());
     timesheets.add(timesheet);
     return timesheet;
   }

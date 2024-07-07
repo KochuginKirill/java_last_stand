@@ -10,5 +10,5 @@ public class Timesheet {
   private Long id;
   private Long projectId;
   private int minutes;
-  private LocalDate createdAt = LocalDate.now();
+  private LocalDate createdAt;
 }

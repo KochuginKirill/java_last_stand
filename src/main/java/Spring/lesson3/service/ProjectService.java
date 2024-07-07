@@ -1,6 +1,7 @@
 package Spring.lesson3.service;
 
 import Spring.lesson3.model.Project;
+import Spring.lesson3.repository.ProjectRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -8,9 +9,10 @@ import java.util.Optional;
 
 @Service
 public class ProjectService {
-    private final ProjectService repository;
 
-    public ProjectService(ProjectService repository) {
+    private final ProjectRepository repository;
+
+    public ProjectService(ProjectRepository repository) {
         this.repository = repository;
     }
 
