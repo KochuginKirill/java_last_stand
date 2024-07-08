@@ -24,8 +24,12 @@ public class ProjectService {
         return repository.getAll();
     }
 
-    public Project create(Project timesheet) {
-        return repository.create(timesheet);
+    public Project create(Project project) {
+        return repository.create(project);
+    }
+
+    public void update(Project project) {
+        repository.update(project);
     }
 
     public void delete(Long id) {

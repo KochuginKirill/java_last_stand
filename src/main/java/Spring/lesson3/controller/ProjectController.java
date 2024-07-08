@@ -2,7 +2,6 @@ package Spring.lesson3.controller;
 
 import Spring.lesson3.model.Project;
 import Spring.lesson3.service.ProjectService;
-import Spring.lesson3.service.TimesheetService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -51,5 +50,13 @@ public class ProjectController {
 
         // 204 No Content
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping
+    public ResponseEntity<Project> update(@RequestBody Project project) {
+        service.update(project);
+
+        // 204 No Content
+        return ResponseEntity.status(HttpStatus.OK).body(project);
     }
 }

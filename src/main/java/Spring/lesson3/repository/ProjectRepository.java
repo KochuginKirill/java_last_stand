@@ -36,4 +36,12 @@ public class ProjectRepository {
                 .findFirst()
                 .ifPresent(projects::remove); // если нет - иногда посылают 404 Not Found
     }
+
+    public void update(Project project) {
+        projects.stream()
+                .filter(it -> Objects.equals(it.getId(), project.getId()))
+                .findAny()
+                .ifPresentOrElse(it -> it.setName(project.getName()),
+                        ()->{throw new RuntimeException();}); // если нет - иногда посылают 404 Not Found
+    }
 }
