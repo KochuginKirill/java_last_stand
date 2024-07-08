@@ -32,4 +32,8 @@ public class TimesheetService {
     repository.delete(id);
   }
 
+  public List<Timesheet> getAllByProject (Long id) {
+    return repository.getAllByProject(id);
+  }
+
 }

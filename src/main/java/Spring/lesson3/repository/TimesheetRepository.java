@@ -40,4 +40,15 @@ public class TimesheetRepository {
       .ifPresent(timesheets::remove); // если нет - иногда посылают 404 Not Found
   }
 
+  public List<Timesheet> getAllByProject(Long projectId) {
+    ArrayList<Timesheet> timesheetsByProject = new ArrayList<>();
+    for (Timesheet t:
+         timesheets) {
+      if(t.getProjectId() == projectId){
+        timesheetsByProject.add(t);
+      }
+    }
+    return timesheetsByProject;
+  }
+
 }

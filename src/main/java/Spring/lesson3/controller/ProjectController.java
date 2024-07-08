@@ -1,7 +1,9 @@
 package Spring.lesson3.controller;
 
 import Spring.lesson3.model.Project;
+import Spring.lesson3.model.Timesheet;
 import Spring.lesson3.service.ProjectService;
+import Spring.lesson3.service.TimesheetService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,8 +16,11 @@ import java.util.Optional;
 public class ProjectController {
     private final ProjectService service;
 
-    public ProjectController(ProjectService service) {
+    private final TimesheetService timesheetService;
+
+    public ProjectController(ProjectService service, TimesheetService timesheetService) {
         this.service = service;
+        this.timesheetService = timesheetService;
     }
 
     // /timesheets/{id}
@@ -58,5 +63,10 @@ public class ProjectController {
 
         // 204 No Content
         return ResponseEntity.status(HttpStatus.OK).body(project);
+    }
+
+    @GetMapping("/{id}/timesheets")
+    public ResponseEntity<List<Timesheet>> getAllByProject(@PathVariable Long id) {
+        return ResponseEntity.ok(timesheetService.getAllByProject(id));
     }
 }

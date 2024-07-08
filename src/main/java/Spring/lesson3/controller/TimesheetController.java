@@ -72,4 +72,9 @@ public class TimesheetController {
     return ResponseEntity.noContent().build();
   }
 
+  @GetMapping("/projects/{id}/timesheets")
+  public ResponseEntity<List<Timesheet>> getAllByProject(@PathVariable Long id) {
+    return ResponseEntity.ok(service.getAllByProject(id));
+  }
+
 }
