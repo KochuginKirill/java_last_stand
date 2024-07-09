@@ -4,7 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import Spring.lesson4.model.Timesheet;
-import ru.gb.timesheet.service.TimesheetService;
+import Spring.lesson4.service.TimesheetService;
 
 import java.time.LocalDate;
 import java.util.List;

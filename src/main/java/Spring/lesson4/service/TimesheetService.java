@@ -1,9 +1,9 @@
-package ru.gb.timesheet.service;
+package Spring.lesson4.service;
 
 import org.springframework.stereotype.Service;
-import ru.gb.timesheet.model.Timesheet;
-import ru.gb.timesheet.repository.ProjectRepository;
-import ru.gb.timesheet.repository.TimesheetRepository;
+import Spring.lesson4.model.Timesheet;
+import Spring.lesson4.repository.ProjectRepository;
+import Spring.lesson4.repository.TimesheetRepository;
 
 import java.time.LocalDate;
 import java.util.List;

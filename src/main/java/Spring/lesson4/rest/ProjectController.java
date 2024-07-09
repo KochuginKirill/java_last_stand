@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import Spring.lesson4.model.Project;
 import Spring.lesson4.model.Timesheet;
-import ru.gb.timesheet.service.ProjectService;
+import Spring.lesson4.service.ProjectService;
 
 import java.util.List;
 import java.util.NoSuchElementException;
