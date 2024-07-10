@@ -14,8 +14,6 @@
   <tr>
     <th>Идентификатор записи</th>
     <th>Имя</th>
-    <th>Минут потрачено</th>
-    <th>Дата записи</th>
     <th>Перейти к записи</th>
   </tr>
   </thead>
@@ -23,7 +21,7 @@
   <tr th:each="project : ${projects}">
     <td><span th:text="${project.id}"></span></td>
     <td><span th:text="${project.name}"></span></td>
-    <td><a th:href="@{'/home/projects/{id}'(id=${projects.id})}">Перейти к проекту</a></td>
+    <td><a th:href="@{'/home/projects/{id}'(id=${project.id})}">Перейти к проекту</a></td>
   </tr>
   </tbody>
 </table>

@@ -1,7 +1,6 @@
 package Spring.lesson4.page;
 
 import Spring.lesson4.service.ProjectPageService;
-import Spring.lesson4.service.TimesheetPageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,30 +12,28 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
+@Controller
+@RequestMapping("/home/projects")
+@RequiredArgsConstructor
 public class ProjectPageController {
-    @Controller
-    @RequestMapping("/home/projects")
-    @RequiredArgsConstructor
-    public class TimesheetPageController {
 
-        private final ProjectPageService service;
+    private final ProjectPageService service;
 
-        @GetMapping
-        public String getAllTimesheets(Model model) {
-            List<ProjectPageDto> projects = service.findAll();
-            model.addAttribute("projects", projects);
-            return "projects-page.html";
+    @GetMapping
+    public String getAllTimesheets(Model model) {
+        List<ProjectPageDto> projects = service.findAll();
+        model.addAttribute("projects", projects);
+        return "projects-page.html";
+    }
+
+    @GetMapping("/{id}")
+    public String getProjectPage(@PathVariable Long id, Model model) {
+        Optional<ProjectPageDto> projectOpt = service.findById(id);
+        if (projectOpt.isEmpty()) {
+            throw new NoSuchElementException();
         }
 
-        @GetMapping("/{id}")
-        public String getProjectPage(@PathVariable Long id, Model model) {
-            Optional<ProjectPageDto> projectOpt = service.findById(id);
-            if (projectOpt.isEmpty()) {
-                throw new NoSuchElementException();
-            }
-
-            model.addAttribute("timesheet", projectOpt.get());
-            return "project-page.html";
-        }
+        model.addAttribute("project", projectOpt.get());
+        return "project-page.html";
     }
 }

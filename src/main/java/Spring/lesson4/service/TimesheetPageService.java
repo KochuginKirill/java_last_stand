@@ -37,6 +37,7 @@ public class TimesheetPageService {
     timesheetPageParameters.setId(String.valueOf(timesheet.getId()));
     // 150 -> 2h30m
     timesheetPageParameters.setMinutes(String.valueOf(timesheet.getMinutes()));
+    timesheetPageParameters.setProjectId(String.valueOf(timesheet.getProjectId()));
     timesheetPageParameters.setCreatedAt(timesheet.getCreatedAt().format(DateTimeFormatter.ISO_DATE));
 
     return timesheetPageParameters;
