@@ -53,4 +53,11 @@ public class TimesheetService {
     timesheetRepository.deleteById(id);
   }
 
+  public Optional<Timesheet> getTimesheetsByEmployeeId(Long id) {
+    if (timesheetRepository.findByEmployeeId(id).isEmpty()) {
+      throw new NoSuchElementException("Employee with id = " + id + " does not exists");
+    }
+
+    return timesheetRepository.findByEmployeeId(id);
+  }
 }

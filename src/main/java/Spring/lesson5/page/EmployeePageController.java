@@ -1,8 +1,10 @@
 package Spring.lesson5.page;
 
 import Spring.lesson5.model.Employee;
+import Spring.lesson5.model.Timesheet;
 import Spring.lesson5.service.EmployeeService;
 import Spring.lesson5.service.TimesheetPageService;
+import Spring.lesson5.service.TimesheetService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +21,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class EmployeePageController {
     private final EmployeeService service;
+    private  final TimesheetPageService serviceTimesheet;
 
     // Вместо описания, можно использовать @RequiredArgsConstructor
 //  public TimesheetPageController(TimesheetService service) {
@@ -42,5 +45,15 @@ public class EmployeePageController {
 
         model.addAttribute("employee", timesheetOpt.get());
         return "lesson5_employee.html";
+    }
+
+    @GetMapping("/{id}/timesheets")
+    public String getTimesheetPage(@PathVariable Long id, Model model){
+        List<TimesheetPageDto> timesheets = serviceTimesheet.getTimesheetsByEmployeeId(id);
+        if (timesheets.isEmpty()) {
+            throw new NoSuchElementException();
+        }
+        model.addAttribute("timesheets", timesheets);
+        return "lesson5_timesheets-page.html";
     }
 }

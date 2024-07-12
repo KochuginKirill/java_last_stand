@@ -6,6 +6,7 @@ import Spring.lesson5.model.Timesheet;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 public interface TimesheetRepository extends JpaRepository<Timesheet, Long>
   /* , NamedEntityRepository<Timesheet, Long> */ {
@@ -30,6 +31,9 @@ public interface TimesheetRepository extends JpaRepository<Timesheet, Long>
   // jql - java query language
   @Query("select t from Timesheet t where t.projectId = :projectId order by t.createdAt desc")
   List<Timesheet> findByProjectId(Long projectId);
+
+  @Query("select t from Timesheet t where t.employeeId = :employeeId order by t.minutes desc")
+  Optional<Timesheet> findByEmployeeId(Long employeeId);
 
 //  @Query(nativeQuery = true, value = "select * from timesheet where project_id = :projectId")
 //  List<Long> findIdsByProjectId(Long projectId);

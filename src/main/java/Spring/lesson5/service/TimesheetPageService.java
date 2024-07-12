@@ -42,4 +42,10 @@ public class TimesheetPageService {
     return timesheetPageParameters;
   }
 
+  public List<TimesheetPageDto> getTimesheetsByEmployeeId(Long id) {
+    return timesheetService.getTimesheetsByEmployeeId(id).stream()
+            .map(this::convert)
+            .toList();
+  }
+
 }

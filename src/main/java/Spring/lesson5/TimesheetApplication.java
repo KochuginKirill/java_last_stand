@@ -58,6 +58,7 @@ TimesheetApplication {
 			timesheet.setProjectId(ThreadLocalRandom.current().nextLong(1, 6));
 			timesheet.setCreatedAt(createdAt);
 			timesheet.setMinutes(ThreadLocalRandom.current().nextInt(100, 1000));
+			timesheet.setEmployeeId((long) i);
 
 			timesheetRepo.save(timesheet);
 		}

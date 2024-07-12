@@ -22,5 +22,6 @@ public class Timesheet {
   private Long projectId;
   private Integer minutes;
   private LocalDate createdAt;
+  private Long employeeId;
 
 }
