@@ -1,5 +1,7 @@
 package Spring.lesson5;
 
+import Spring.lesson5.model.Employee;
+import Spring.lesson5.repository.EmployeeRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -58,6 +60,14 @@ TimesheetApplication {
 			timesheet.setMinutes(ThreadLocalRandom.current().nextInt(100, 1000));
 
 			timesheetRepo.save(timesheet);
+		}
+
+		EmployeeRepository employeeRepo = ctx.getBean(EmployeeRepository.class);
+
+		for (int i = 1; i <= 10; i++) {
+			Employee employee = new Employee();
+			employee.setName("Employee #" + i);
+			employeeRepo.save(employee);
 		}
 	}
 
