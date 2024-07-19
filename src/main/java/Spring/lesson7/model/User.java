@@ -1,5 +1,6 @@
 package Spring.lesson7.model;
 
+import io.swagger.v3.oas.annotations.StringToClassMapItem;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -23,11 +24,14 @@ public class User {
   @Column(name = "roleId")
   private Long roleId;
 
-  @ManyToMany(cascade = CascadeType.ALL)
-  @JoinTable(name="usersRole",
-          joinColumns=  @JoinColumn(name="roles_id", referencedColumnName="id"),
-          inverseJoinColumns= @JoinColumn(name="user_roleId", referencedColumnName="id") )
-  private Set<Role> roles = new HashSet<>();
+  @Column
+  private String role;
+
+//  @ManyToMany(cascade = CascadeType.ALL)
+//  @JoinTable(name="usersRole",
+//          joinColumns=  @JoinColumn(name="roles_id", referencedColumnName="id"),
+//          inverseJoinColumns= @JoinColumn(name="user_roleId", referencedColumnName="id") )
+//  private Set<Role> roles = new HashSet<>();
 
 //  @ManyToMany
 //  Set<Role> roles;

@@ -54,16 +54,19 @@ public class TimesheetApplication {
     UserRepository userRepository = ctx.getBean(UserRepository.class);
     User admin = new User();
     admin.setLogin("admin");
-    admin.setPassword("$2a$12$LbAPCsHn8ZN5MUDqDmIX7e9n1YlDkCxEt0lW3Q2WuW0M1vteo8jvG");
-    admin.setRoleId(1L);// admin
+    admin.setPassword("$2a$12$LbAPCsHn8ZN5MUDqDmIX7e9n1YlDkCxEt0lW3Q2WuW0M1vteo8jvG"); // admin
+    admin.setRoleId(1L);
+    admin.setRole("admin");
     User user = new User();
     user.setLogin("user");
-    user.setPassword("$2a$12$.dlnBAYq6sOUumn3jtG.AepxdSwGxJ8xA2iAPoCHSH61Vjl.JbIfq");
+    user.setPassword("$2a$12$.dlnBAYq6sOUumn3jtG.AepxdSwGxJ8xA2iAPoCHSH61Vjl.JbIfq"); //user
     user.setRoleId(3L);
+    user.setRole("user");
     User anonymous = new User();
     anonymous.setLogin("anon");
-    anonymous.setPassword("$2a$12$tPkyYzWCYUEePUFXUh3scesGuPum1fvFYwm/9UpmWNa52xEeUToRu");
-    anonymous.setRoleId(2L);// anon
+    anonymous.setPassword("$2a$12$tPkyYzWCYUEePUFXUh3scesGuPum1fvFYwm/9UpmWNa52xEeUToRu"); //anon
+    anonymous.setRoleId(2L);
+    anonymous.setRole("anonymous");
     userRepository.save(admin);
     userRepository.save(user);
     userRepository.save(anonymous);

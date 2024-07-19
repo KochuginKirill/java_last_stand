@@ -30,11 +30,14 @@ public class Role {
     return name;
   }
 
-  @ManyToMany(cascade = CascadeType.ALL)
-  @JoinTable(name="usersRole",
-          joinColumns=  @JoinColumn(name="user_roleId", referencedColumnName="id"),
-          inverseJoinColumns= @JoinColumn(name="roles_id", referencedColumnName="id") )
-  private Set<User> users = new HashSet<>();
+//  @ManyToMany(cascade = CascadeType.ALL)
+//  @JoinTable(name="usersRole",
+//          joinColumns=  @JoinColumn(name="user_roleId", referencedColumnName="id"),
+//          inverseJoinColumns= @JoinColumn(name="roles_id", referencedColumnName="id") )
+//  private Set<User> users = new HashSet<>();
+
+//  @ManyToMany
+//  Set<User> users;
 
   @Override
   public String toString() {
