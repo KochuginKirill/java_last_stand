@@ -21,11 +21,15 @@ public class User {
   @Column(name = "password")
   private String password;
 
-  @Column(name = "roleId")
-  private Long roleId;
-
   @Column
   private String role;
+
+//  public String role(){
+//    Iterator<Role> iterator = roles.iterator();
+//    Role element = iterator.next();
+//    System.out.println(element.getName());
+//    return element.getName();
+//  }
 
 //  @ManyToMany(cascade = CascadeType.ALL)
 //  @JoinTable(name="usersRole",
@@ -33,6 +37,6 @@ public class User {
 //          inverseJoinColumns= @JoinColumn(name="user_roleId", referencedColumnName="id") )
 //  private Set<Role> roles = new HashSet<>();
 
-  @ManyToMany
-  Set<Role> roles;
+  @ManyToMany(fetch = FetchType.EAGER)
+  Set<Role> roles = new HashSet<>();
 }

@@ -43,9 +43,9 @@ public class TimesheetApplication {
 
     // hashFunc(rawPassword) == hashInDatabase
 
-    Role adminRole = new Role("admin", 1L);
-    Role anonymousRole = new Role("anonymous", 2L);
-    Role userRole = new Role("user", 3L);
+    Role adminRole = new Role("admin");
+    Role userRole = new Role("user");
+    Role anonymousRole = new Role("anonymous");
     RoleRepository roleRepository = ctx.getBean(RoleRepository.class);
     roleRepository.save(adminRole);
     roleRepository.save(anonymousRole);
@@ -55,17 +55,14 @@ public class TimesheetApplication {
     User admin = new User();
     admin.setLogin("admin");
     admin.setPassword("$2a$12$LbAPCsHn8ZN5MUDqDmIX7e9n1YlDkCxEt0lW3Q2WuW0M1vteo8jvG"); // admin
-    admin.setRoleId(1L);
     admin.setRole("admin");
     User user = new User();
     user.setLogin("user");
     user.setPassword("$2a$12$.dlnBAYq6sOUumn3jtG.AepxdSwGxJ8xA2iAPoCHSH61Vjl.JbIfq"); //user
-    user.setRoleId(3L);
     user.setRole("user");
     User anonymous = new User();
     anonymous.setLogin("anon");
     anonymous.setPassword("$2a$12$tPkyYzWCYUEePUFXUh3scesGuPum1fvFYwm/9UpmWNa52xEeUToRu"); //anon
-    anonymous.setRoleId(2L);
     anonymous.setRole("anonymous");
     userRepository.save(admin);
     userRepository.save(user);

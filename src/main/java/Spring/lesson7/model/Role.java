@@ -13,17 +13,12 @@ import java.util.Set;
 public class Role {
 
   @Id
+  @GeneratedValue(strategy = GenerationType.SEQUENCE)
   private Long id;
   private String name;
 
-  public Role(String name, Long id) {
-    this.id = id;
+  public Role(String name) {
     this.name = name;
-  }
-
-  public Role() {
-    this.id = 1l;
-    this.name = "empty";
   }
 
   public String getName() {
@@ -36,8 +31,8 @@ public class Role {
 //          inverseJoinColumns= @JoinColumn(name="roles_id", referencedColumnName="id") )
 //  private Set<User> users = new HashSet<>();
 
-  @ManyToMany
-  Set<User> users;
+  @ManyToMany(fetch = FetchType.EAGER)
+  Set<User> users = new HashSet<>();
 
   @Override
   public String toString() {
