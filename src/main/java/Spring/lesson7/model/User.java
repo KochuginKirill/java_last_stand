@@ -33,6 +33,6 @@ public class User {
 //          inverseJoinColumns= @JoinColumn(name="user_roleId", referencedColumnName="id") )
 //  private Set<Role> roles = new HashSet<>();
 
-//  @ManyToMany
-//  Set<Role> roles;
+  @ManyToMany
+  Set<Role> roles;
 }

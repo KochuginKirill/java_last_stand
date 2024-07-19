@@ -13,8 +13,8 @@ import java.util.Set;
 public class Role {
 
   @Id
-  private Long id = 1l;
-  private String name = "empty";
+  private Long id;
+  private String name;
 
   public Role(String name, Long id) {
     this.id = id;
@@ -36,8 +36,8 @@ public class Role {
 //          inverseJoinColumns= @JoinColumn(name="roles_id", referencedColumnName="id") )
 //  private Set<User> users = new HashSet<>();
 
-//  @ManyToMany
-//  Set<User> users;
+  @ManyToMany
+  Set<User> users;
 
   @Override
   public String toString() {
