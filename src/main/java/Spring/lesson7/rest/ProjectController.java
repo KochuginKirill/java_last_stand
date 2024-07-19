@@ -1,17 +1,17 @@
 package Spring.lesson7.rest;
 
+import Spring.lesson7.model.Timesheet;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import Spring.lesson7.model.Project;
-import Spring.lesson7.model.Timesheet;
+import Spring.lesson7.model.Role;
 import Spring.lesson7.service.ProjectService;
 
 import java.util.List;

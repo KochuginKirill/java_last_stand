@@ -10,7 +10,6 @@ import org.springframework.security.config.core.GrantedAuthorityDefaults;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import Spring.lesson7.model.Role;
 
 @Configuration
 @EnableWebSecurity
@@ -28,7 +27,10 @@ public class SecurityConfiguration {
       .authorizeHttpRequests(requests -> requests
 //          .requestMatchers("/home/projects/**").hasAuthority(Role.ADMIN.getName())
 //        .requestMatchers("/home/projects/**").hasRole("admin") // MY_ROLE_PREFIX_admin
-          .requestMatchers("/home/timesheets/**").hasAnyAuthority(Role.USER.getName())
+          .requestMatchers("/home/timesheets/**").hasAuthority("user")
+          .requestMatchers("/home/projects/**").hasAuthority("admin")
+          .requestMatchers("/timesheets/**").hasAuthority("rest")
+          .requestMatchers("/projects/**").hasAuthority("rest")
           .anyRequest().authenticated()
       )
       .formLogin(Customizer.withDefaults())

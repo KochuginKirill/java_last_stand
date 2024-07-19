@@ -1,10 +1,10 @@
 package Spring.lesson7.rest;
 
-import io.swagger.v3.oas.annotations.tags.Tag;
+import Spring.lesson7.model.Timesheet;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import Spring.lesson7.model.Timesheet;
+import Spring.lesson7.model.Role;
 import Spring.lesson7.service.TimesheetService;
 
 import java.time.LocalDate;
@@ -57,7 +57,6 @@ public class TimesheetController {
   @PostMapping // создание нового ресурса
   public ResponseEntity<Timesheet> create(@RequestBody Timesheet timesheet) {
     final Timesheet created = service.create(timesheet);
-
     // 201 Created
     return ResponseEntity.status(HttpStatus.CREATED).body(created);
   }

@@ -1,16 +1,14 @@
 package Spring.lesson7;
 
+import Spring.lesson7.repository.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import Spring.lesson7.model.*;
-import Spring.lesson7.repository.ProjectRepository;
-import Spring.lesson7.repository.TimesheetRepository;
-import Spring.lesson7.repository.UserRepository;
-import Spring.lesson7.repository.UserRoleRepository;
 
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.concurrent.ThreadLocalRandom;
 
 @SpringBootApplication
@@ -45,45 +43,32 @@ public class TimesheetApplication {
 
     // hashFunc(rawPassword) == hashInDatabase
 
+    Role adminRole = new Role("admin", 1L);
+    Role anonymousRole = new Role("anonymous", 2L);
+    Role userRole = new Role("user", 3L);
+    RoleRepository roleRepository = ctx.getBean(RoleRepository.class);
+    roleRepository.save(adminRole);
+    roleRepository.save(anonymousRole);
+    roleRepository.save(userRole);
+
     UserRepository userRepository = ctx.getBean(UserRepository.class);
     User admin = new User();
     admin.setLogin("admin");
-    admin.setPassword("$2a$12$LbAPCsHn8ZN5MUDqDmIX7e9n1YlDkCxEt0lW3Q2WuW0M1vteo8jvG"); // admin
+    admin.setPassword("$2a$12$LbAPCsHn8ZN5MUDqDmIX7e9n1YlDkCxEt0lW3Q2WuW0M1vteo8jvG");
+    admin.setRoleId(1L);// admin
     User user = new User();
     user.setLogin("user");
-    user.setPassword("$2a$12$.dlnBAYq6sOUumn3jtG.AepxdSwGxJ8xA2iAPoCHSH61Vjl.JbIfq"); // user
+    user.setPassword("$2a$12$.dlnBAYq6sOUumn3jtG.AepxdSwGxJ8xA2iAPoCHSH61Vjl.JbIfq");
+    user.setRoleId(3L);
     User anonymous = new User();
     anonymous.setLogin("anon");
-    anonymous.setPassword("$2a$12$tPkyYzWCYUEePUFXUh3scesGuPum1fvFYwm/9UpmWNa52xEeUToRu"); // anon
-    admin = userRepository.save(admin);
-    user = userRepository.save(user);
-    anonymous = userRepository.save(anonymous);
-
-    UserRoleRepository userRoleRepository = ctx.getBean(UserRoleRepository.class);
-    // id user_id role_name
-    //  1       1     admin
-    //  2       1     user
-    //  3       2     user
-    UserRole adminAdminRole = new UserRole();
-    adminAdminRole.setUserId(admin.getId());
-    adminAdminRole.setRoleName(Role.ADMIN.getName());
-    userRoleRepository.save(adminAdminRole);
-
-    UserRole adminUserRole = new UserRole();
-    adminUserRole.setUserId(admin.getId());
-    adminUserRole.setRoleName(Role.USER.getName());
-    userRoleRepository.save(adminUserRole);
-
-    UserRole userUserRole = new UserRole();
-    userUserRole.setUserId(user.getId());
-    userUserRole.setRoleName(Role.USER.getName());
-    userRoleRepository.save(userUserRole);
-
-//		JdbcTemplate jdbcTemplate = ctx.getBean(JdbcTemplate.class);
-//		jdbcTemplate.execute("delete from project");
+    anonymous.setPassword("$2a$12$tPkyYzWCYUEePUFXUh3scesGuPum1fvFYwm/9UpmWNa52xEeUToRu");
+    anonymous.setRoleId(2L);// anon
+    userRepository.save(admin);
+    userRepository.save(user);
+    userRepository.save(anonymous);
 
     ProjectRepository projectRepo = ctx.getBean(ProjectRepository.class);
-
     for (int i = 1; i <= 5; i++) {
       Project project = new Project();
       project.setName("Project #" + i);

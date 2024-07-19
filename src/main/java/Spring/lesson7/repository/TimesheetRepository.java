@@ -1,14 +1,16 @@
 package Spring.lesson7.repository;
 
+import Spring.lesson7.model.Timesheet;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import Spring.lesson7.model.Timesheet;
+import Spring.lesson7.model.Role;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 public interface TimesheetRepository extends JpaRepository<Timesheet, Long>
-  /* , NamedEntityRepository<Timesheet, Long> */ {
+        /* , NamedEntityRepository<Timesheet, Long> */ {
 
   // select * from timesheet where project_id = $1
   // Note: сломается, если в БД результат выдает больше одного значения
@@ -57,3 +59,4 @@ public interface TimesheetRepository extends JpaRepository<Timesheet, Long>
   // List<Timesheet> findByProjectNameLike(String projectNameLike);
 
 }
+
