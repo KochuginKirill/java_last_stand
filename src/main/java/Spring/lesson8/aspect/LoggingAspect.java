@@ -1,7 +1,9 @@
 package Spring.lesson8.aspect;
 
 import lombok.extern.slf4j.Slf4j;
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
@@ -19,16 +21,18 @@ public class LoggingAspect {
 //  Bean = TimesheetService, obj = timesheetService
   // proxyTimesheetService(obj)
 
-  @Pointcut("execution(* ru.gb.timesheet.service.TimesheetService.*(..))")
-  public void timesheetServiceMethodsPointcut() {
+  @Pointcut("execution(* Spring.lesson8.*.*.*(..))")
+  public void lesson8Pointcut() {
   }
 
-  // Pointcut - точка входа в аспект
-//  @Before(value = "timesheetServiceMethodsPointcut()")
-//  public void beforeTimesheetServiceFindById(JoinPoint jp) {
-//    String methodName = jp.getSignature().getName();
-//    log.info("Before -> TimesheetService#{}", methodName);
-//  }
+//   Pointcut - точка входа в аспект
+  @Before(value = "lesson8Pointcut()")
+  public void beforeTimesheetServiceFindById(JoinPoint jp) {
+    Object[] signatureArgs = jp.getArgs();
+    for (Object signatureArg: signatureArgs) {
+      System.out.println("Arg: " + signatureArg);
+    }
+  }
 
 //  @AfterThrowing(value = "timesheetServiceMethodsPointcut()", throwing = "ex")
 //  public void afterTimesheetServiceFindById(JoinPoint jp, Exception ex) {

@@ -3,8 +3,8 @@ package Spring.lesson8.rest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.gb.timesheet.model.Timesheet;
-import ru.gb.timesheet.service.TimesheetService;
+import Spring.lesson8.model.Timesheet;
+import Spring.lesson8.service.TimesheetService;
 
 import java.time.LocalDate;
 import java.util.List;

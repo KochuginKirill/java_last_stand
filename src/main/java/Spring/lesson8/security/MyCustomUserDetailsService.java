@@ -6,9 +6,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
-import ru.gb.timesheet.model.User;
-import ru.gb.timesheet.repository.UserRepository;
-import ru.gb.timesheet.repository.UserRoleRepository;
+import Spring.lesson8.model.User;
+import Spring.lesson8.repository.UserRepository;
+import Spring.lesson8.repository.UserRoleRepository;
 
 import java.util.List;
 

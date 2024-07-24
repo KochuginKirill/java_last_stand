@@ -1,12 +1,11 @@
 package Spring.lesson8.service;
 
-import org.slf4j.event.Level;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.gb.timesheet.aspect.Timer;
-import ru.gb.timesheet.model.Timesheet;
-import ru.gb.timesheet.repository.ProjectRepository;
-import ru.gb.timesheet.repository.TimesheetRepository;
+import Spring.lesson8.aspect.Timer;
+import Spring.lesson8.model.Timesheet;
+import Spring.lesson8.repository.ProjectRepository;
+import Spring.lesson8.repository.TimesheetRepository;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -15,7 +14,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 @Service
-@Timer(level = Level.TRACE)
+@Timer()
 public class TimesheetService {
 
   private final TimesheetRepository timesheetRepository;

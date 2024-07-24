@@ -22,10 +22,10 @@ public class TimerAspect {
 //    }
 //  }
 
-  @Pointcut("@annotation(ru.gb.timesheet.aspect.Timer)") // method
+  @Pointcut("@annotation(Spring.lesson8.aspect.Timer)") // method
   public void timerMethodsPointcut() {}
 
-  @Pointcut("@within(ru.gb.timesheet.aspect.Timer)") // class
+  @Pointcut("@within(Spring.lesson8.aspect.Timer)") // class
   public void timerTypePointcut() {}
 
   @Around(value = "timerMethodsPointcut() || timerTypePointcut()")

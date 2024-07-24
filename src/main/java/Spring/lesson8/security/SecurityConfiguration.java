@@ -11,7 +11,7 @@ import org.springframework.security.config.core.GrantedAuthorityDefaults;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import ru.gb.timesheet.model.Role;
+import Spring.lesson8.model.Role;
 
 @Configuration
 @EnableWebSecurity

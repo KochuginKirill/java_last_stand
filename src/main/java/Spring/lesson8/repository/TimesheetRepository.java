@@ -2,7 +2,7 @@ package Spring.lesson8.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import ru.gb.timesheet.model.Timesheet;
+import Spring.lesson8.model.Timesheet;
 
 import java.time.LocalDate;
 import java.util.List;

@@ -9,9 +9,9 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.gb.timesheet.model.Project;
-import ru.gb.timesheet.model.Timesheet;
-import ru.gb.timesheet.service.ProjectService;
+import Spring.lesson8.model.Project;
+import Spring.lesson8.model.Timesheet;
+import Spring.lesson8.service.ProjectService;
 
 import java.util.List;
 import java.util.NoSuchElementException;

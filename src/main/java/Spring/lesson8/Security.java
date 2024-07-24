@@ -1,4 +1,4 @@
-package ru.gb.timesheet;
+package Spring.lesson8;
 
 public class Security {
 

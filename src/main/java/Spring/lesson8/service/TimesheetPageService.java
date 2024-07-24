@@ -2,9 +2,9 @@ package Spring.lesson8.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.gb.timesheet.model.Project;
-import ru.gb.timesheet.model.Timesheet;
-import ru.gb.timesheet.page.TimesheetPageDto;
+import Spring.lesson8.model.Project;
+import Spring.lesson8.model.Timesheet;
+import Spring.lesson8.page.TimesheetPageDto;
 
 import java.time.format.DateTimeFormatter;
 import java.util.List;

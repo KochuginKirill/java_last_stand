@@ -1,13 +1,13 @@
-package ru.gb.timesheet;
+package Spring.lesson8;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import ru.gb.timesheet.model.*;
-import ru.gb.timesheet.repository.ProjectRepository;
-import ru.gb.timesheet.repository.TimesheetRepository;
-import ru.gb.timesheet.repository.UserRepository;
-import ru.gb.timesheet.repository.UserRoleRepository;
+import Spring.lesson8.model.*;
+import Spring.lesson8.repository.ProjectRepository;
+import Spring.lesson8.repository.TimesheetRepository;
+import Spring.lesson8.repository.UserRepository;
+import Spring.lesson8.repository.UserRoleRepository;
 
 import java.time.LocalDate;
 import java.util.concurrent.ThreadLocalRandom;

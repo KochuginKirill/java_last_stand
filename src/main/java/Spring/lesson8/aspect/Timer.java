@@ -1,7 +1,5 @@
 package Spring.lesson8.aspect;
 
-import org.slf4j.event.Level;
-
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -13,6 +11,5 @@ public @interface Timer {
 
   boolean enabled() default true;
 
-  org.slf4j.event.Level level() default Level.DEBUG;
 
 }
