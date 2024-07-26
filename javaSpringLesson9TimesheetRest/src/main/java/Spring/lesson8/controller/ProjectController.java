@@ -1,5 +1,8 @@
 package Spring.lesson8.controller;
 
+import Spring.lesson8.model.Project;
+import Spring.lesson8.model.Timesheet;
+import Spring.lesson8.service.ProjectService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -9,9 +12,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import Spring.lesson8.model.Project;
-import Spring.lesson8.model.Timesheet;
-import Spring.lesson8.service.ProjectService;
 
 import java.util.List;
 import java.util.NoSuchElementException;

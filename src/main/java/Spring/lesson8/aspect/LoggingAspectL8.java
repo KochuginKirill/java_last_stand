@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Slf4j // Slf4j - Simple logging facade for java
 @Aspect
 @Component
-public class LoggingAspect {
+public class LoggingAspectL8 {
 
   // Before
   // AfterThrowing

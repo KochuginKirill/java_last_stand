@@ -9,7 +9,16 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/timesheet-page/pom.xml" />
+        <option value="$PROJECT_DIR$/javaSpringLesson9TimesheetRest/pom.xml" />
+        <option value="$PROJECT_DIR$/javaSpringLesson9TimesheetPage/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/SpringLesson9TimesheetRest/pom.xml" />
+        <option value="$PROJECT_DIR$/timesheet-page/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_X" default="true" project-jdk-name="21" project-jdk-type="JavaSDK">
